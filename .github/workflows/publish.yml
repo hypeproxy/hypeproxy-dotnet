@@ -43,9 +43,12 @@ jobs:
           --source nuget.org \
           --skip-duplicate
 
-    - name: Publish Package on GitHub
-      run: |
-        dotnet nuget push "*.nupkg" \
-          --api-key ${{ secrets.GITHUB_TOKEN }} \
-          --source https://nuget.pkg.github.com/${{ github.repository_owner }} \
-          --skip-duplicate
+#    - name: Publish Package on GitHub
+#      run: |
+#        dotnet nuget push "*.nupkg" \
+#          --api-key ${{ secrets.GITHUB_TOKEN }} \
+#          --source https://nuget.pkg.github.com/${{ github.repository_owner }} \
+#          --skip-duplicate
+
+    - name: Trigger publishing of NPM Package
+      run: curl -XPOST -u "${{ secrets.GITHUB_TOKEN}}:${{secrets.GITHUB_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/hypeproxy/hypeproxy-js/dispatches --data '{"event_type": "build_application"}'
