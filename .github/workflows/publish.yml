@@ -2,53 +2,45 @@ name: Release
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 6.0.x
-    
-    - name: Restore Dependencies
-      run: dotnet restore ./src/HypeProxy/HypeProxy.csproj
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 6.0.x
 
-    - name: Bump Version
-      run: |
-        chmod +x "${GITHUB_WORKSPACE}/.github/bump.sh"
-        "${GITHUB_WORKSPACE}/.github/bump.sh"
+      - name: Restore Dependencies
+        run: dotnet restore ./src/HypeProxy/HypeProxy.csproj
 
-    - name: Build
-      run: dotnet build ./src/HypeProxy/HypeProxy.csproj --configuration Release
+      - name: Bump Version
+        run: |
+          chmod +x "${GITHUB_WORKSPACE}/.github/bump.sh"
+          "${GITHUB_WORKSPACE}/.github/bump.sh"
 
-    - name: Build Package
-      run: dotnet pack ./src/HypeProxy/HypeProxy.csproj --configuration Release --output .
+      - name: Build
+        run: dotnet build ./src/HypeProxy/HypeProxy.csproj --configuration Release
 
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        commit_message: Bump Version
+      - name: Build Package
+        run: dotnet pack ./src/HypeProxy/HypeProxy.csproj --configuration Release --output .
 
-    - name: Publish Package on NuGet
-      run: |
-        dotnet nuget push $(ls *.nupkg) \
-          --api-key ${{ secrets.NUGET_TOKEN }} \
-          --source nuget.org \
-          --skip-duplicate
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Bump Version
 
-#    - name: Publish Package on GitHub
-#      run: |
-#        dotnet nuget push "*.nupkg" \
-#          --api-key ${{ secrets.GITHUB_TOKEN }} \
-#          --source https://nuget.pkg.github.com/${{ github.repository_owner }} \
-#          --skip-duplicate
+      - name: Publish Package on NuGet
+        run: |
+          dotnet nuget push $(ls *.nupkg) \
+            --api-key ${{ secrets.NUGET_TOKEN }} \
+            --source nuget.org \
+            --skip-duplicate
 
-    - name: Trigger publishing of NPM Package
-      run: curl -XPOST -u "${{ secrets.GITHUB_TOKEN}}:${{secrets.GITHUB_TOKEN}}" -H "Accept: application/vnd.github.everest-preview+json" -H "Content-Type: application/json" https://api.github.com/repos/hypeproxy/hypeproxy-js/dispatches --data '{"event_type": "build_application"}'
+      - name: Trigger publishing of NPM Package
+        run: curl -XPOST -u "${{ secrets.GITHUB_TOKEN}}:${{secrets.GITHUB_TOKEN}}" -H "Accept:application/vnd.github.everest-preview+json" -H "Content-Type:application/json" https://api.github.com/repos/hypeproxy/hypeproxy-js/dispatches --data '{"event_type":"build_application"}'
