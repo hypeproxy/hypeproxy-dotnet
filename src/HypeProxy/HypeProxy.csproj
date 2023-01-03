@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <ImplicitUsings>enable</ImplicitUsings>
-        <!--<Nullable>enable</Nullable>-->
         <RootNamespace>HypeProxy</RootNamespace>
         <UserSecretsId>a066cb46-9600-404c-a6b1-668a36aea8c0</UserSecretsId>
         <TargetFramework>net6.0</TargetFramework>

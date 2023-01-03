@@ -1,7 +1,9 @@
 using HypeProxy.Responses.InsightsSummary;
+using Tapper;
 
 namespace HypeProxy.Responses.Insights;
 
+[TranspilationSource]
 public class LogLine
 {
     public DateTime DateTime { get; set; }
