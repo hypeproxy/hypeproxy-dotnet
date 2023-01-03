@@ -51,15 +51,4 @@ public class Invoice : BaseEntity
 	
 	[NotMapped]
 	public string Details { get; set; }
-
-	// public static Invoice FromPrice(Price price) => new()
-	// {
-	// 	UnitPrice = price.UnitPrice,
-	// 	VatAmount = price.VatAmount,
-	// 	SubtotalAmount = price.SubtotalAmount,
-	// 	TotalAmount = price.TotalAmount,
-	// 	CouponCode = price.CouponCode,
-	// 	PriceOff = price.PriceOff,
-	// 	PercentOff = price.PercentOff,
-	// };
 }

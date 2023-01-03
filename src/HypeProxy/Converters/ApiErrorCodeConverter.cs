@@ -1,7 +1,8 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using HypeProxy.Responses.ApiResponse;
 
-namespace HypeProxy.Responses.ApiResponse;
+namespace HypeProxy.Converters;
 
 [Obsolete]
 public class ApiErrorCodeConverter : JsonConverter<ApiErrorCode>

@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿#nullable enable
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
@@ -6,6 +7,9 @@ using Tapper;
 
 namespace HypeProxy.Entities;
 
+/// <summary>
+/// This is the base entity, the whole of entities inherits from it.
+/// </summary>
 [TranspilationSource]
 public abstract class BaseEntity
 {

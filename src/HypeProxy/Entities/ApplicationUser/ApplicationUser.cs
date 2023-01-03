@@ -11,17 +11,6 @@ public class ApplicationUser : IdentityUser<Guid>
 	[JsonPropertyOrder(-2)]
 	public override Guid Id { get; set; }
 
-	// public Guid Uid => Guid.Parse(Id);
-
-	// [Key]
-	// [JsonPropertyOrder(-2)]
-	// [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-	// public override Guid Id
-	// {
-	// 	get => base.Id;
-	// 	set => base.Id = value;
-	// }
-
 	[JsonPropertyOrder(-2)]
 	public override string Email { get; set; }
 

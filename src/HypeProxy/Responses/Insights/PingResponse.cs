@@ -1,7 +1,6 @@
-using System.Net;
 using Tapper;
 
-namespace HypeProxy.Responses;
+namespace HypeProxy.Responses.Insights;
 
 [TranspilationSource]
 public class PingResponse

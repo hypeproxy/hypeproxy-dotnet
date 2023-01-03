@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using HypeProxy.Constants;
+using HypeProxy.Converters;
 using Tapper;
 
 namespace HypeProxy.Responses.ApiResponse;

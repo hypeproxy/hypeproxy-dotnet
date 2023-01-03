@@ -1,10 +1,14 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel;
+using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
 using HypeProxy.Constants;
 using Tapper;
 
 namespace HypeProxy.Entities;
 
+/// <summary>
+/// Corresponds to a product (Mobile Proxies, Static Residential etc).
+/// </summary>
 [Orphan]
 [TranspilationSource]
 public class Product : BaseEntity
@@ -40,9 +44,14 @@ public class Product : BaseEntity
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	public int? MinimumOrder { get; set; } = 1;
 	
+	#nullable enable
 	[PublicApiIgnore]
-	public string? PreHook { get; set; }
+	// [EditorBrowsable(EditorBrowsableState.Never)]
+	// [DesignOnly(true)]
+	// [Editor("LOl", "JESUS")]
+	public string? PreHook { internal get; set; }
 
 	[PublicApiIgnore]
 	public string? PostHook { get; set; }
+	#nullable disable
 }

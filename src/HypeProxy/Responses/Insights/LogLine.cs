@@ -1,3 +1,5 @@
+using HypeProxy.Responses.InsightsSummary;
+
 namespace HypeProxy.Responses.Insights;
 
 public class LogLine

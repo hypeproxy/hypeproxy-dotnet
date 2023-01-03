@@ -11,13 +11,10 @@ namespace HypeProxy.Responses.ApiResponse;
 [TranspilationSource]
 public class ApiResponse
 {
-    // public StatusAttribute _status;
-
     [JsonPropertyOrder(-2)]
     public string Message { get; set; }
 
     [JsonPropertyOrder(-1)]
-    // [JsonConverter(typeof(StatusCodeConverter))]
     public int StatusCode { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]

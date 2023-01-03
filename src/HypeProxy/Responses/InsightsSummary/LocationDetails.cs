@@ -1,6 +1,6 @@
 using Tapper;
 
-namespace HypeProxy.Responses;
+namespace HypeProxy.Responses.InsightsSummary;
 
 [TranspilationSource]
 public class LocationDetails

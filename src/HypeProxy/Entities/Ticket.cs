@@ -19,8 +19,10 @@ public class Ticket : BaseEntity
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	public Guid? RelatedPurchaseId { get; set; }
 
+	#nullable enable
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	public string? AttachmentUrl { get; set; }
+	#nullable disable
 	
 	public bool IsClosed { get; set; }
 }

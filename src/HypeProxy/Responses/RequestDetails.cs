@@ -23,14 +23,4 @@ public class RequestDetails
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string ClientIp { get; set; }
-
-    // public static RequestDetails From(HttpContext httpContext, Guid? userId = null) => new()
-    // {
-    //     UserId = userId,
-    //     Endpoint = httpContext.Request.Path,
-    //     Date = DateTime.UtcNow,
-    //     Timestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds(),
-    //     UserAgent = httpContext.Request.Headers.FirstOrDefault(x => x.Key == "User-Agent").Value,
-    //     ClientIp = httpContext.Connection.RemoteIpAddress?.ToString()
-    // };
 }
