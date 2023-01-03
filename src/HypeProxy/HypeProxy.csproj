@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <!--<Nullable>enable</Nullable>-->
+        <RootNamespace>HypeProxy</RootNamespace>
+        <UserSecretsId>a066cb46-9600-404c-a6b1-668a36aea8c0</UserSecretsId>
+        <TargetFramework>net6.0</TargetFramework>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>HypeProxy</PackageId>
+        <Title>HypeProxy.io v3.0 C# Library</Title>
+        <Version>3.0.17</Version>
+        <Authors>HypeProxy.io</Authors>
+        <Company>HypeProxy.io</Company>
+        <PackageDescription>HypeProxy.io v3.0 C# Library, also contains shared types.</PackageDescription>
+        <PackageVersion>3.0.17-alpha</PackageVersion>
+        <Description>HypeProxy.io v3.0 C# Library, also contains shared types.</Description>
+        <RepositoryUrl>https://github.com/hypeproxy/hypeproxy-dotnet.git</RepositoryUrl>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <PackageProjectUrl>https://github.com/hypeproxy</PackageProjectUrl>
+        <PackageIconUrl>https://raw.githubusercontent.com/hypeproxy/hypeproxy/main/logo.png</PackageIconUrl>
+        <PackageLicenseUrl>https://github.com/hypeproxy/hypeproxy-dotnet/blob/master/LICENSE.md</PackageLicenseUrl>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="ClintSharp" Version="1.1.1" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.12" />
+        <PackageReference Include="Tapper.Analyzer" Version="1.6.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Tapper.Attributes" Version="1.6.0" />
+    </ItemGroup>
+</Project>

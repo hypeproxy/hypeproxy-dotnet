@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    
+    - name: Restore Dependencies
+      run: dotnet restore ./src/HypeProxy/HypeProxy.csproj
+
+    - name: Bump Version
+      run: |
+        chmod +x "${GITHUB_WORKSPACE}/.github/bump.sh"
+        "${GITHUB_WORKSPACE}/.github/bump.sh"
+
+    - name: Build
+      run: dotnet build ./src/HypeProxy/HypeProxy.csproj --configuration Release
+
+    - name: Build Package
+      run: dotnet pack ./src/HypeProxy/HypeProxy.csproj --configuration Release --output .
+
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Bump Version
+
+    - name: Publish Package on NuGet
+      run: |
+        dotnet nuget push $(ls *.nupkg) \
+          --api-key ${{ secrets.NUGET_TOKEN }} \
+          --source nuget.org \
+          --skip-duplicate
+
+    - name: Publish Package on GitHub
+      run: |
+        dotnet nuget push "*.nupkg" \
+          --api-key ${{ secrets.NUGET_TOKEN }} \
+          --source https://nuget.pkg.github.com/${{ github.repository_owner }} \
+          --skip-duplicate
