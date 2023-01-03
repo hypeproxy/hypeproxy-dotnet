@@ -46,6 +46,6 @@ jobs:
     - name: Publish Package on GitHub
       run: |
         dotnet nuget push "*.nupkg" \
-          --api-key ${{ secrets.NUGET_TOKEN }} \
+          --api-key ${{ secrets.GITHUB_TOKEN }} \
           --source https://nuget.pkg.github.com/${{ github.repository_owner }} \
           --skip-duplicate
