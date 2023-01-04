@@ -38,4 +38,8 @@
         </PackageReference>
         <PackageReference Include="Tapper.Attributes" Version="1.6.0" />
     </ItemGroup>
+
+    <Target Name="PostBuild" Condition="'$(Configuration)' != 'Release'" AfterTargets="PostBuildEvent">
+      <Exec Command="cd /Users/clint.network/Projects/HypeProxy.io/v3/hypeproxy-js&#xA;./build.sh" />
+    </Target>
 </Project>
