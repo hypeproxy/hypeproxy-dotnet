@@ -14,7 +14,7 @@ public class Provider : BaseEntity
 	public string CompanyName { get; set; }
 	public string WebsiteUrl { get; set; }
 	public string LogoUrl { get; set; }
-
+	
 	[NotMapped]
 	[JsonIgnore]
 	public int AvailableStock { get; set; }

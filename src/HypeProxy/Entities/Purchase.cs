@@ -20,8 +20,6 @@ public class Purchase : BaseEntity
 	public PaymentMethods PaymentMethod { get; set; }
 	public BillingPeriods BillingPeriod { get; init; }
 	
-	public Guid PriceId { get; set; }
-	
 	#nullable enable
 	[PublicApiIgnore]
 	public string? RelatedPaymentId { get; set; }

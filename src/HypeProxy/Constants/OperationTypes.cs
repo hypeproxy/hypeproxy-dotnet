@@ -1,5 +1,3 @@
-using System;
-
 namespace HypeProxy.Constants;
 
 [Obsolete]
