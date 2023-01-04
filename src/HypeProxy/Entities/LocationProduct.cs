@@ -1,4 +1,5 @@
 using HypeProxy.Attributes;
+using HypeProxy.Interfaces;
 using Tapper;
 
 namespace HypeProxy.Entities;
