@@ -6,5 +6,5 @@ namespace HypeProxy.Responses;
 public class PaymentResponse
 {
     public Uri ReturnUrl { get; set; }
-    public string CustomData { get; set; }
+    public object CustomData { get; set; }
 }

@@ -1,8 +1,6 @@
 using System.Text.Json.Serialization;
 using Tapper;
 
-// ReSharper disable MemberCanBePrivate.Global
-
 namespace HypeProxy.Responses.ApiResponse;
 
 /// <summary>
@@ -12,6 +10,7 @@ namespace HypeProxy.Responses.ApiResponse;
 public class ApiResponse
 {
     [JsonPropertyOrder(-2)]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string Message { get; set; }
 
     [JsonPropertyOrder(-1)]
@@ -25,5 +24,4 @@ public class ApiResponse
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public RequestDetails RequestDetails { get; set; }
-    
 }
