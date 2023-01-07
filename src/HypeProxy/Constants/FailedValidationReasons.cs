@@ -10,4 +10,5 @@ public enum FailedValidationReasons
 	ProviderNotFound,
 	UnavailableAutomaticRenew,
 	InsufficientQuantityAvailable,
+	Forbidden
 }
