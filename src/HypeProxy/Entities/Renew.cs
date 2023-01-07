@@ -8,7 +8,7 @@ namespace HypeProxy.Entities;
 [Orphan]
 public class Renew : BaseEntity
 {
-    public Guid ProductDetailsId { get; init; }
+    public Guid ProxyId { get; init; }
 
     public double EachMinutes { get; set; }
 }

@@ -7,7 +7,7 @@ namespace HypeProxy.Entities;
 [Orphan]
 [DependsOnPurchase]
 [TranspilationSource]
-public class ProductDetail : BaseEntity
+public class Proxy : BaseEntity
 {
 	public Guid ProductId { get; set; }
 	public Guid LocationId { get; set; }
