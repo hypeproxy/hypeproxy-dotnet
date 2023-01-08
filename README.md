@@ -61,6 +61,12 @@ To verify if `hypeproxy-cli` is successfully installed you can execute:
 hypeproxy health
 ```
 
+To login to your account you can do:
+
+```bash
+hypeproxy signin email@gmail.com Passw0rd!
+```
+
 ## Credits & Contribution
 
 All our library and tools are provided in full opensource, you can also contribute by reading [this guide](CONTRIBUTING.md).
