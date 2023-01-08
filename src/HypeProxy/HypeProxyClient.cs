@@ -21,6 +21,7 @@ public class HypeProxyClient
     public EntitiesAccessor<Bay> Bays { get; set; }
     public EntitiesAccessor<Purchase> Purchases { get; set; }
     public EntitiesAccessor<Feature> Features { get; set; }
+    public EntitiesAccessor<Proxy> Proxies { get; set; }
     #endregion
 
     public HypeProxyClient()
@@ -44,6 +45,7 @@ public class HypeProxyClient
         Bays = new EntitiesAccessor<Bay>(_httpClient);
         Purchases = new EntitiesAccessor<Purchase>(_httpClient);
         Features = new EntitiesAccessor<Feature>(_httpClient);
+        Proxies = new EntitiesAccessor<Proxy>(_httpClient);
         #endregion
     }
 
