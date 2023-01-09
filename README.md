@@ -58,7 +58,13 @@ dotnet tool install --global HypeProxy.Cli
 To verify if `hypeproxy-cli` is successfully installed you can execute:
 
 ```bash
-hypeproxy healthy
+hypeproxy health
+```
+
+To login to your account you can do:
+
+```bash
+hypeproxy signin email@gmail.com Passw0rd!
 ```
 
 ## Credits & Contribution
