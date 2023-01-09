@@ -7,6 +7,7 @@ namespace HypeProxy.Entities;
 [TranspilationSource]
 public class Feature : BaseEntity
 {
+    public string Tag { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     
