@@ -35,7 +35,11 @@ public class Purchase : BaseEntity
 	
 	[NotMapped]
 	[PublicApiIgnore]
-	public bool IsRenewable { get; set; }
+	public bool IsAutomaticallyRenewable => PaymentMethod == PaymentMethods.CreditCard && Status == PurchaseStatuses.Live;
+
+	[NotMapped]
+	[PublicApiIgnore]
+	public bool IsExtendable => Status == PurchaseStatuses.Live;
 
 	[NotMapped]
 	public bool IsGracePeriod { get; set; }

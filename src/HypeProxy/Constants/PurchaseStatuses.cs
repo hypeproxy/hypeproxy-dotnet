@@ -11,15 +11,15 @@ namespace HypeProxy.Constants;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum PurchaseStatuses
 {
-	[Description("Describes the different status of a purchase.")]
+	// [Description("Describes the different status of a purchase.")]
 	Created,
 	
-	Provisioning,
+	// Provisioning,
 	
 	Live,
 	Canceled,
 	Refunded,
 	Off,
 	Removed,
-	Extending
+	// Extending
 }
