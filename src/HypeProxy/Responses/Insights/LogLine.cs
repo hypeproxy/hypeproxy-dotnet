@@ -1,4 +1,4 @@
-using HypeProxy.Responses.InsightsSummary;
+using HypeProxy.Responses.Insights.Summary;
 using Tapper;
 
 namespace HypeProxy.Responses.Insights;
