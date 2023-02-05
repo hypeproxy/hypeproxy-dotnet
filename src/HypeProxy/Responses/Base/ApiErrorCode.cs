@@ -1,7 +1,7 @@
 using HypeProxy.Constants;
 using Tapper;
 
-namespace HypeProxy.Responses.ApiResponse;
+namespace HypeProxy.Responses.Base;
 
 [TranspilationSource]
 public class ApiErrorCode

@@ -1,6 +1,6 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using HypeProxy.Responses.ApiResponse;
+using HypeProxy.Responses.Base;
 
 namespace HypeProxy.Converters;
 

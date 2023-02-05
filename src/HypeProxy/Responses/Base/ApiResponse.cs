@@ -1,7 +1,7 @@
 using System.Text.Json.Serialization;
 using Tapper;
 
-namespace HypeProxy.Responses.ApiResponse;
+namespace HypeProxy.Responses.Base;
 
 /// <summary>
 /// Provides a standardized API response.

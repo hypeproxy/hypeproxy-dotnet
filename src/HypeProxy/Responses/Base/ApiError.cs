@@ -3,7 +3,7 @@ using HypeProxy.Constants;
 using HypeProxy.Converters;
 using Tapper;
 
-namespace HypeProxy.Responses.ApiResponse;
+namespace HypeProxy.Responses.Base;
 
 /// <summary>
 /// Describes an occured API error.
