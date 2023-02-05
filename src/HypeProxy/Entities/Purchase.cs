@@ -39,7 +39,7 @@ public class Purchase : BaseEntity
 
 	[NotMapped]
 	[PublicApiIgnore]
-	public bool IsExtendable => Status == PurchaseStatuses.Live;
+	public bool IsExtendable => Status == PurchaseStatuses.Live && !IsAutomaticallyRenewed;
 
 	[NotMapped]
 	public bool IsGracePeriod { get; set; }
