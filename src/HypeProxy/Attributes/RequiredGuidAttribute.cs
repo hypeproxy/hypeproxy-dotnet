@@ -12,7 +12,7 @@ public class RequiredGuidAttribute : RequiredAttribute
 		return value switch
 		{
 			Guid guid => guid != Guid.Empty,
-			_         => true
+			_ => true
 		};
 	}
 }

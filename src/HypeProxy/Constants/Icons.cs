@@ -4,6 +4,7 @@ using Tapper;
 namespace HypeProxy.Constants;
 
 [TranspilationSource]
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum Icons
 {
     AcademicCapIcon,

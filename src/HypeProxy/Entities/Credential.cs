@@ -8,7 +8,6 @@ namespace HypeProxy.Entities;
 [Orphan]
 [TranspilationSource]
 [DependsOnPurchase]
-// [Index(nameof(Id), nameof(Username), IsUnique = true)]
 public class Credential : BaseEntity
 {
 	public string Username { get; set; }
@@ -18,15 +17,4 @@ public class Credential : BaseEntity
 	
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	public IEnumerable<string>? AuthorizedIps { get; set; }
-	
-	// [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	// #nullable enable
-	// public string? AuthorizedIp { get; set; }
-	// #nullable disable
-
-	// [PublicApiIgnore]
-	// public bool IsHttpEnabled { get; set; }
-	
-	// [PublicApiIgnore]
-	// public bool IsSocksEnabled { get; set; }
 }

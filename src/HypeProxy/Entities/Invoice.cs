@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Constants;
-using HypeProxy.Entities.ApplicationUser;
+using HypeProxy.Entities.ApplicationUsers;
 using Tapper;
 
 namespace HypeProxy.Entities;

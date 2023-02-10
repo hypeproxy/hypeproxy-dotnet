@@ -1,8 +1,8 @@
 ﻿using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using HypeProxy.Dtos;
 using HypeProxy.Entities;
+using HypeProxy.Requests;
 using HypeProxy.Responses;
 
 namespace HypeProxy;
@@ -11,7 +11,7 @@ public class HypeProxyClient
 {
     private HypeProxyClientOptions? _hypeProxyClientOptions;
     private readonly HttpClient _httpClient;
-    private ApiKeyArtifact? _apiKeyArtifact;
+    private ApiKeyResponse? _apiKeyArtifact;
     public bool Logged { get; set; }
     
     #region Entities Accessor
@@ -54,9 +54,9 @@ public class HypeProxyClient
     /// </summary>
     /// <param name="email">HypeProxy.io's account email</param>
     /// <param name="password">HypeProxy.io's account password</param>
-    public async Task<ApiKeyArtifact> SignInAsync(string email, string password)
+    public async Task<ApiKeyResponse> SignInAsync(string email, string password)
     {
-        var response = await _httpClient.PostAsJsonAsync("/v3/authentication/sign-in", new SignInModel
+        var response = await _httpClient.PostAsJsonAsync("/v3/authentication/sign-in", new SignInRequest
         {
             Email = email,
             Password = password
@@ -70,7 +70,7 @@ public class HypeProxyClient
                 throw new Exception("Unable to sign-in the user.");
             
             case HttpStatusCode.OK:
-                _apiKeyArtifact = await response.Content.ReadFromJsonAsync<ApiKeyArtifact>() ?? throw new Exception();
+                _apiKeyArtifact = await response.Content.ReadFromJsonAsync<ApiKeyResponse>() ?? throw new Exception();
                 _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKeyArtifact?.Token);
                 Logged = true;
                 return _apiKeyArtifact ?? throw new Exception();
@@ -83,7 +83,7 @@ public class HypeProxyClient
     /// <param name="token">HypeProxy.io API Token.</param>
     public HypeProxyClient SignInAsync(string token)
     {
-        _apiKeyArtifact = new ApiKeyArtifact
+        _apiKeyArtifact = new ApiKeyResponse
         {
             Token = token,
         };

@@ -11,6 +11,9 @@ public class IpRotation : BaseEntity
 {
     public Guid ProxyId { get; init; }
 
+    /// <summary>
+    /// Interval in minutes.
+    /// </summary>
     public int Interval { get; set; }
     
     [JsonIgnore]

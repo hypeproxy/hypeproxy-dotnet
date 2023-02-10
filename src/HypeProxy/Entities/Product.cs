@@ -14,9 +14,6 @@ namespace HypeProxy.Entities;
 public class Product : BaseEntity
 {
 	public string Name { get; set; }
-
-	// [PublicApiIgnore]
-	// public string Terminology { get; set; } = "Proxy";
 	
 	[PublicApiIgnore]
 	public string ShortName { get; set; }

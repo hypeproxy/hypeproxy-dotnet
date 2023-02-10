@@ -1,5 +1,5 @@
 using HypeProxy.Constants;
-using HypeProxy.Responses;
+using HypeProxy.Requests;
 
 namespace HypeProxy.Entities;
 
