@@ -1,30 +1,21 @@
+using System.Text.Json.Serialization;
 using HypeProxy.Constants;
+using HypeProxy.Converters;
 using Tapper;
 
 namespace HypeProxy.Errors;
 
 [TranspilationSource]
+[JsonConverter(typeof(ApiErrorCodeConverter))]
 public class ApiErrorCode
 {
     private readonly string _value;
-
-    public ApiErrorCode()
-    {
-    }
-    
     public ApiErrorCode(string value) => _value = value;
-    public ApiErrorCode(ApiErrorCodes errorCode) => _value = errorCode.ToString();
-    public ApiErrorCode(FailedValidationReasons validationReason) => _value = validationReason.ToString();
-    
-    public static implicit operator ApiErrorCodes(ApiErrorCode d) => Enum.Parse<ApiErrorCodes>(d._value);
-    public static implicit operator ApiErrorCode(ApiErrorCodes d) => new(d);
-    
-    public static implicit operator FailedValidationReasons(ApiErrorCode d) => Enum.Parse<FailedValidationReasons>(d._value);
-    public static implicit operator ApiErrorCode(FailedValidationReasons d) => new(d);
     
     public static implicit operator string(ApiErrorCode d) => d._value;
     public static implicit operator ApiErrorCode(string d) => new(d);
+    
+    public static string From(DefaultApiErrorCodes apiErrorCode) => new ApiErrorCode(apiErrorCode.ToString());
 
-    public static string From(ApiErrorCodes errorCode) => new ApiErrorCode(errorCode);
-    public static string From(FailedValidationReasons validationReason) => new ApiErrorCode(validationReason);
+    protected internal string GetValue() => _value;
 }

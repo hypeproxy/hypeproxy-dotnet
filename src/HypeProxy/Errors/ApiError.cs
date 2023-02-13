@@ -10,7 +10,7 @@ namespace HypeProxy.Errors;
 [TranspilationSource]
 public class ApiError
 {
-    // [JsonConverter(typeof(ApiErrorCodeConverter))]
+    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public ApiErrorCode Code { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
@@ -20,15 +20,17 @@ public class ApiError
     {
     }
     
-    public ApiError(ApiErrorCode code, string description = null)
+    public ApiError(string code, string description = null)
     {
         Code = code;
         Description = description;
     }
     
-    public ApiError(ApiErrorCodes code = ApiErrorCodes.UnknownError, string description = null)
+    public ApiError(DefaultApiErrorCodes defaultApiErrorCode = DefaultApiErrorCodes.UnknownError, string description = null)
     {
-        Code = code;
+        Code = ApiErrorCode.From(defaultApiErrorCode);
         Description = description;
     }
+    
+    public ApiError(string description = null) => Description = description;
 }

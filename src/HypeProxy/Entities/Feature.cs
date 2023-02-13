@@ -1,4 +1,5 @@
 using HypeProxy.Attributes;
+using HypeProxy.Constants;
 using Tapper;
 
 namespace HypeProxy.Entities;
@@ -7,9 +8,9 @@ namespace HypeProxy.Entities;
 [TranspilationSource]
 public class Feature : BaseEntity
 {
-    public string Tag { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
+    public Features Tag { get; set; }
     
     [PublicApiIgnore]
     public string Icon { get; set; }
