@@ -19,7 +19,6 @@ public class ChangeCredentialsRequest
 
 	public bool IsIpAuthenticationEnabled { get; set; }
 
-	// [RegularExpression("[0-9\\.,]*", ErrorMessage = "The AuthorizedIp field is not a valid IP address.")]
 	[RequiredIfTrue(nameof(IsIpAuthenticationEnabled), ErrorMessage = "The `AuthorizedIps` field is required.")]
 	public IEnumerable<string> AuthorizedIps { get; set; }
 }
