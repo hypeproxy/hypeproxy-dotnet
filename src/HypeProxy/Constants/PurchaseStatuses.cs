@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 using Tapper;
 
 namespace HypeProxy.Constants;
@@ -11,15 +10,14 @@ namespace HypeProxy.Constants;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum PurchaseStatuses
 {
-	// [Description("Describes the different status of a purchase.")]
 	Created,
-	
-	// Provisioning,
-	
 	Live,
-	Canceled,
-	Refunded,
-	Off,
-	Removed,
+	Off
+	
+	// [Description("Describes the different status of a purchase.")]
+	// Canceled,
+	// Refunded
+	// Provisioning
+	// Removed
 	// Extending
 }
