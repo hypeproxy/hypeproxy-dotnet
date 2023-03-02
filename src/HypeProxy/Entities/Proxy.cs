@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
 using Tapper;
+using YamlDotNet.Serialization;
 
 namespace HypeProxy.Entities;
 
@@ -9,6 +10,8 @@ namespace HypeProxy.Entities;
 [TranspilationSource]
 public class Proxy : BaseEntity
 {
+	[YamlIgnore]
+	public new Guid Id { get; set; }
 	public Guid ProductId { get; set; }
 	public Guid LocationId { get; set; }
 	public Guid BayId { get; set; }
