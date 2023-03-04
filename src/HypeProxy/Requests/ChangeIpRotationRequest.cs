@@ -10,11 +10,4 @@ public class ChangeIpRotationRequest
     
     [Required]
     public int Interval { get; set; }
-
-    [Obsolete]
-    public ChangeIpRotationRequest WithId(Guid proxyId)
-    {
-        ProxyId = proxyId;
-        return this;
-    }
 }

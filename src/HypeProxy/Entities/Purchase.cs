@@ -35,11 +35,18 @@ public class Purchase : BaseEntity
 	
 	[NotMapped]
 	[PublicApiIgnore]
-	public bool IsAutomaticallyRenewable => PaymentMethod == PaymentMethods.CreditCard && Status == PurchaseStatuses.Live;
+	public bool IsAutomaticallyRenewable => PaymentMethod == PaymentMethods.CreditCard && 
+	                                        Status == PurchaseStatuses.Live &&
+	                                        RelatedPaymentId != null &&
+	                                        RelatedPaymentId.StartsWith("sub_");
 
 	[NotMapped]
 	[PublicApiIgnore]
-	public bool IsExtendable => Status == PurchaseStatuses.Live && !IsAutomaticallyRenewed;
+	public bool IsRenewable => Status == PurchaseStatuses.Live && !IsAutomaticallyRenewed;
+
+	[NotMapped]
+	[PublicApiIgnore]
+	public bool IsRefundable => DateTime.UtcNow.AddDays(2) <= StartDateTime;
 
 	[NotMapped]
 	public bool IsGracePeriod { get; set; }
