@@ -2,6 +2,7 @@ using Tapper;
 
 namespace HypeProxy.DataModels;
 
+[Obsolete]
 [TranspilationSource]
 public class LocationDetails
 {

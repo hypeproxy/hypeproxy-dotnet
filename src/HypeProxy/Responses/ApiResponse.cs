@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using HypeProxy.Entities.Statuses;
 using HypeProxy.Errors;
 using HypeProxy.Requests;
 using Tapper;
@@ -21,14 +22,14 @@ public class ApiResponse
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public object Data { get; set; }
 
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public IEnumerable<ApiError> Errors { get; set; }
 
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public RequestDetails RequestDetails { get; set; }
+    public RequestDetail RequestDetails { get; set; }
 }
 
-public class ApiResponse<T> : ApiResponse
-{
-    public new T Data { get; set; }
-}
+
+// public class ApiResponse<T> : ApiResponse
+// {
+//     public new T Data { get; set; }
+// }

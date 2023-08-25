@@ -1,18 +1,25 @@
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using Tapper;
 
 namespace HypeProxy.Entities;
 
-// [Orphan]
+/// <summary>
+/// Define a coupon to use when making a purchase.
+/// </summary>
 [TranspilationSource]
-public class Coupon : BaseEntity
+[Obsolete]
+public class Coupon : BaseEntityWithOwnership
 {
-	public string Name { get; set; }
-	public string Description { get; set; }
+    public string Code { get; set; }
+    
+    public string? Description { get; set; }
+    
+	public double PercentOff { get; set; }
+    
 	public bool IsOneTime { get; set; }
 	public bool IsUsed { get; set; }
-	public double PercentOff { get; set; }
 
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-	public DateTime? ExpirationDateTime { get; set; }
+	public DateTime? ExpireAt { get; set; }
 }

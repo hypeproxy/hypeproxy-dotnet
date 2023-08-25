@@ -8,8 +8,8 @@ namespace HypeProxy.Requests;
 public class ChangeUserSettingsRequest
 {
     [Required]
-    public BillingPeriods DefaultBillingPeriods { get; set; }
+    public BillingCycles DefaultBillingCycle { get; set; }
     
     [Required]
-    public PaymentMethods DefaultPaymentMethods { get; set; }
+    public PaymentMethods DefaultPaymentMethod { get; set; }
 }

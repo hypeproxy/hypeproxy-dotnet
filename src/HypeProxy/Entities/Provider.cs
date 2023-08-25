@@ -1,25 +1,43 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using HypeProxy.Attributes;
+using HypeProxy.Entities.Proxies;
 using Tapper;
 
 namespace HypeProxy.Entities;
 
-[Orphan]
+/// <summary>
+/// Defines an ISP provider.
+/// </summary>
 [TranspilationSource]
-public class Provider : BaseEntity
+public partial class Provider : BaseEntity
 {
 	public string Name { get; set; }
-	public string Description { get; set; }
-	public string CompanyName { get; set; }
-	public string WebsiteUrl { get; set; }
-	public string LogoUrl { get; set; }
-	
-	[NotMapped]
-	[JsonIgnore]
-	public int AvailableStock { get; set; }
+	public string? Description { get; set; }
+	public string? CompanyName { get; set; }
+	public string? WebsiteUrl { get; set; }
+	public string? LogoUrl { get; set; }
 
-	[NotMapped]
-	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-	public bool OutOfStock => AvailableStock == 0;
+}
+
+public partial class Provider
+{
+    [JsonIgnore]
+    public virtual ICollection<Product> Products { get; set; }
+    
+    [JsonIgnore]
+    public virtual ICollection<Location> Locations { get; set; }
+    
+    [JsonIgnore]
+    public virtual ICollection<Proxy> Proxies { get; set; }
+}
+
+public partial class Provider
+{
+    [NotMapped]
+    // [JsonIgnore]
+    public int AvailableStock { get; set; }
+
+    [NotMapped]
+    // [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    public bool OutOfStock => AvailableStock == 0;
 }

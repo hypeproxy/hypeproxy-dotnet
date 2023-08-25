@@ -29,20 +29,18 @@ public class OrderCriteriaRequest
     [RequiredGuid]
     public Guid ProviderId { get; set; }
 
-    public PaymentMethods PaymentMethod { get; set; } = PaymentMethods.CreditCard;
-    public BillingPeriods BillingPeriod { get; set; } = BillingPeriods.Monthly;
+    public PaymentMethods PaymentMethod { get; set; }
+    public BillingCycles BillingCycle { get; set; }
 
     public int Quantity { get; set; } = 1;
     
     /// <summary>
     /// If you have a coupon you can indicate it.
     /// </summary>
-    #nullable enable
     public string? CouponCode { get; set; }
-    #nullable disable
     
     /// <summary>
     /// Renew the purchase at the end of billing period.
     /// </summary>
-    public bool IsAutomaticallyRenewed { get; set; } = true;
+    public bool IsAutomaticallyRenewed { get; set; }
 }

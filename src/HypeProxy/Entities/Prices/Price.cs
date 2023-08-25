@@ -1,45 +1,38 @@
-using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations.Schema;
 using HypeProxy.Attributes;
 using HypeProxy.Constants;
 using Tapper;
 
 namespace HypeProxy.Entities.Prices;
 
-[Orphan]
 [TranspilationSource]
-public class Price : BaseEntity
+public partial class Price : BaseEntity
 {
-	private double _unitPrice;
-	private int _quantity;
+    public PaymentMethods PaymentMethod { get; set; }
+    public BillingCycles BillingCycle { get; set; }
+    
+    public bool IsAutomaticRenewEnabled { get; set; }
+    
+    public double UnitPrice { get; set; }
+    
+    [PublicApiIgnore]
+    public string? PlanId { get; set; }
+}
 
-	[JsonIgnore]
-	public Guid? ProductId { get; set; }
-	
-	public Guid? LocationId { get; set; }
-	public Guid? ProviderId { get; set; }
-	
-	public PaymentMethods PaymentMethod { get; set; }
-	public BillingPeriods BillingPeriod { get; set; }
-
-	[PublicApiIgnore]
-	public string PlanId { get; set; }
-	
-	[PublicApiIgnore]
-	public string? PlanIdPeriod { get; set; }
-	
-	public double UnitPrice
-	{
-		get
-		{
-			var tiers = PriceTiers?.OrderBy(tiers => tiers.MaximumQuantity).ToList();
-			var maxTiers = tiers?.Last();
-			return _quantity >= maxTiers?.MaximumQuantity ? maxTiers.UnitPrice : tiers?.FirstOrDefault(tier => _quantity < tier.MaximumQuantity && _quantity > 1)?.UnitPrice ?? _unitPrice;
-		}
-		set => _unitPrice = value;
-	}
-
-	[JsonIgnore]
-	public IEnumerable<PriceTiers>? PriceTiers { get; set; }
-
-	public void DefineQuantity(int quantity) => _quantity = quantity;
+public partial class Price
+{
+    [ForeignKey(nameof(Product))]
+    public Guid ProductId { get; set; }
+    
+    [ForeignKey(nameof(Location))]
+    public Guid? LocationId { get; set; }
+    
+    [ForeignKey(nameof(Provider))]
+    public Guid? ProviderId { get; set; }
+    
+    public virtual Product Product { get; set; }
+    public virtual Location? Location { get; set; }
+    public virtual Provider? Provider { get; set; }
+    
+    public virtual ICollection<PriceTier>? PriceTiers { get; set; }
 }

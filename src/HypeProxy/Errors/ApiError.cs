@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using HypeProxy.Constants;
 using Tapper;
 
@@ -7,13 +6,12 @@ namespace HypeProxy.Errors;
 /// <summary>
 /// Describes an occured API error.
 /// </summary>
+[Obsolete]
 [TranspilationSource]
 public class ApiError
 {
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public ApiErrorCode Code { get; set; }
 
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string Description { get; set; }
 
     public ApiError()

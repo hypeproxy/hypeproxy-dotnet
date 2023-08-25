@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using HypeProxy.Attributes;
 using Tapper;
 
 namespace HypeProxy.Responses;
@@ -7,25 +6,18 @@ namespace HypeProxy.Responses;
 [TranspilationSource]
 public class OrderSummaryResponse
 {
-    public string Details { get; set; }
+    public string? Details { get; set; }
     public double UnitPrice { get; set; }
     
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+    [Obsolete("We remove the VAT inside LLC migration")]
     public double? VatAmount { get; set; }
     public double SubtotalAmount { get; set; }
     public double TotalAmount { get; set; }
-    
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    #nullable enable
     public string? CouponCode { get; set; }
-    #nullable disable
     
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [Obsolete("Need to check which property is really needed")]
     public double? PriceOff { get; set; }
     
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+    [Obsolete("Need to check which property is really needed")]
     public double? PercentOff { get; set; }
-
-    [PublicApiIgnore]
-    public int AvailableStockForCriteria { get; set; }
 }

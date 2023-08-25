@@ -2,6 +2,8 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using HypeProxy.Entities;
+using HypeProxy.Entities.Infrastructure;
+using HypeProxy.Entities.Proxies;
 using HypeProxy.Requests;
 using HypeProxy.Responses;
 

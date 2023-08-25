@@ -4,6 +4,7 @@
         <RootNamespace>HypeProxy</RootNamespace>
         <UserSecretsId>a066cb46-9600-404c-a6b1-668a36aea8c0</UserSecretsId>
         <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -32,11 +33,18 @@
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
         <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.12" />
         <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="2.3.1" />
-        <PackageReference Include="Tapper.Analyzer" Version="1.6.0">
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.9">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.9" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+        <PackageReference Include="Stripe.net" Version="39.80.0" />
+        <PackageReference Include="Tapper.Analyzer" Version="1.8.3">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Tapper.Attributes" Version="1.6.0" />
+        <PackageReference Include="Tapper.Attributes" Version="1.8.3" />
         <PackageReference Include="YamlDotNet" Version="12.0.2" />
     </ItemGroup>
 

@@ -10,5 +10,6 @@ public enum WarningLevels
 	Information,
 	Success,
 	Warning,
-	Danger
+	Danger,
+    Muted
 }

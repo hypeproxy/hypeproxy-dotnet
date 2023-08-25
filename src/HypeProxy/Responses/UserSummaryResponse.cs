@@ -1,5 +1,5 @@
 using System.Text.Json.Serialization;
-using HypeProxy.Entities.ApplicationUsers;
+using HypeProxy.Entities.Users;
 using Tapper;
 
 namespace HypeProxy.Responses;
@@ -12,5 +12,5 @@ public class UserSummaryResponse
     public string Avatar { get; set; }
     
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public AuthorizationDetails Authorization { get; set; }
+    public AuthorizationDetails? Authorization { get; set; }
 }

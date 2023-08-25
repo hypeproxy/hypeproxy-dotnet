@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using HypeProxy.Attributes;
 using Tapper;
 
 namespace HypeProxy.Requests;
@@ -16,9 +15,10 @@ public class ChangeCredentialsRequest
 	[DataType(DataType.Password)]
 	[MinLength(6, ErrorMessage = "This password is too weak.")]
 	public string Password { get; set; }
-
-	public bool IsIpAuthenticationEnabled { get; set; }
-
-	[RequiredIfTrue(nameof(IsIpAuthenticationEnabled), ErrorMessage = "The `AuthorizedIps` field is required.")]
+    
 	public IEnumerable<string> AuthorizedIps { get; set; }
+    
+
+    // public bool IsIpAuthenticationEnabled { get; set; }
+    // [RequiredIfTrue(nameof(IsIpAuthenticationEnabled), ErrorMessage = "The `AuthorizedIps` field is required.")]
 }

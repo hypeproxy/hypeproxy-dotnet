@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using Tapper;
 
 namespace HypeProxy.Constants;
@@ -7,6 +8,9 @@ namespace HypeProxy.Constants;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum PaymentMethods
 {
+    [Display(Name = "Credit Card")]
 	CreditCard,
-	Cryptos
+    
+    [Display(Name = "Cryptocurrency")]
+	Cryptocurrency
 }

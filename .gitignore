@@ -7,4 +7,6 @@ obj
 
 src/HypeProxyImplementationTests
 
+**/_Deprecated
+
 *.nupkg

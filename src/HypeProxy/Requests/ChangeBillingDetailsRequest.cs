@@ -25,14 +25,14 @@ public class ChangeBillingDetailsRequest
     public bool IsCompany { get; set; }
 
     [RequiredIfTrue(nameof(IsCompany))]
-    public string CompanyName { get; set; }
+    public string? CompanyName { get; set; }
 
     [RequiredIfTrue(nameof(IsCompany))]
-    public string CompanyIdentificationNumber { get; set; }
+    public string? CompanyIdentificationNumber { get; set; }
+
+    // [RequiredIfTrue(nameof(IsCompany))]
+    public string? CompanyVatNumber { get; set; }
 
     [RequiredIfTrue(nameof(IsCompany))]
-    public string CompanyVatNumber { get; set; }
-
-    [RequiredIfTrue(nameof(IsCompany))]
-    public string CompanyCountry { get; set; }
+    public string? CompanyCountry { get; set; }
 }
