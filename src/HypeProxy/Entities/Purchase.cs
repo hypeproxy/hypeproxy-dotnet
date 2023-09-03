@@ -81,6 +81,23 @@ public partial class Purchase
     public virtual ICollection<Proxy> Proxies { get; set; }
 }
 
+public partial class Purchase
+{
+    [NotMapped]
+    public bool IsGracePeriod =>
+        Status == PurchaseStatuses.GracePeriod || (Status == PurchaseStatuses.Live && LiveUntil < DateTime.UtcNow);
+
+    [NotMapped]
+    public DateTime? GracePeriodEnd => IsGracePeriod ?
+        BillingCycle switch
+        {
+            BillingCycles.Weekly => LiveUntil?.AddDays(1),
+            BillingCycles.Daily => LiveUntil?.AddHours(3),
+            BillingCycles.Yearly => LiveUntil?.AddDays(7),
+            _ => LiveUntil?.AddDays(3)
+        } : null;
+}
+
 // public partial class Purchase
 // {
 //     [NotMapped]
