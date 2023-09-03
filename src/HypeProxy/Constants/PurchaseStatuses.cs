@@ -12,7 +12,8 @@ public enum PurchaseStatuses
 {
 	Created,
 	Live,
-	Off
+	Off,
+    GracePeriod
 	
 	// [Description("Describes the different status of a purchase.")]
 	// Canceled,
@@ -20,4 +21,6 @@ public enum PurchaseStatuses
 	// Provisioning
 	// Removed
 	// Extending
+    ,
+    Canceled
 }
