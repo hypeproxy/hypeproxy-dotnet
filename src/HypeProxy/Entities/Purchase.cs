@@ -85,7 +85,8 @@ public partial class Purchase
 {
     [NotMapped]
     public bool IsGracePeriod =>
-        Status == PurchaseStatuses.GracePeriod || (Status == PurchaseStatuses.Live && LiveUntil < DateTime.UtcNow);
+        Status == PurchaseStatuses.GracePeriod 
+        || (Status == PurchaseStatuses.Live && LiveUntil < DateTime.UtcNow);
 
     [NotMapped]
     public DateTime? GracePeriodEnd => IsGracePeriod ?
@@ -96,6 +97,11 @@ public partial class Purchase
             BillingCycles.Yearly => LiveUntil?.AddDays(7),
             _ => LiveUntil?.AddDays(3)
         } : null;
+
+    [NotMapped]
+    public bool IsRefundable =>
+        DateTime.UtcNow <= CreatedAt?.AddHours(48) 
+        && PaymentMethod == PaymentMethods.CreditCard;
 }
 
 // public partial class Purchase
