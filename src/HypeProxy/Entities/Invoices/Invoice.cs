@@ -23,9 +23,9 @@ public partial class Invoice : BaseEntityWithOwnership
     
     public PaymentMethods PaymentMethod { get; set; }
 	
-	public double SubtotalAmount { get; set; }
+	public decimal SubtotalAmount { get; set; }
 	
-	public double TotalAmount { get; set; }
+	public decimal TotalAmount { get; set; }
 	
 	public string? ThirdPartyInvoiceId { get; set; }
 	public string? HostedInvoiceUrl { get; set; }

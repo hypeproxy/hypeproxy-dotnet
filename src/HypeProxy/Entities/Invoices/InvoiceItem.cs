@@ -16,8 +16,8 @@ public partial class InvoiceItem
     
     public string Name { get; set; }
     public int Quantity { get; set; }
-    public double UnitPrice { get; set; }
-    public double TotalAmount { get; set; }
+    public decimal UnitPrice { get; set; }
+    public decimal TotalAmount { get; set; }
 }
 
 public partial class InvoiceItem
