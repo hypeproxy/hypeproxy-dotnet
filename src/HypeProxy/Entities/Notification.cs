@@ -13,6 +13,7 @@ public class Notification : BaseEntityWithOwnership
 {
 	public string? Title { get; set; }
 	public string? Message { get; set; }
+	public Uri? Link { get; set; }
     
     [JsonConverter(typeof(JsonStringEnumConverter))]
     [EnumDataType(typeof(WarningLevels))]
