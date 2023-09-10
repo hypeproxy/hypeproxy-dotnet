@@ -2,11 +2,12 @@ using HypeProxy.Constants;
 
 namespace HypeProxy.Requests.Payloads;
 
-public class TelegramNotificationPayload
+public class NotificationPayload
 {
-    public string? Emoji { get; set; }
+    public Guid UserId { get; set; }
     public WarningLevels Level { get; set; }
     public string? Title { get; set; }
     public string? Message { get; set; }
-    public object? ModelData { get; set; }
+    public Icons? Icon { get; set; }
+    public string? Link { get; set; }
 }
