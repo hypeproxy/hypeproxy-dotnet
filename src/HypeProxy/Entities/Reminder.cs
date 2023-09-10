@@ -10,7 +10,8 @@ namespace HypeProxy.Entities;
 [EditorBrowsable(EditorBrowsableState.Never)]
 public partial class Reminder : BaseEntityWithOwnership
 {
-    public string ContactEmail { get; set; }
+    [Obsolete]
+    public string? ContactEmail { get; set; }
 
     public bool WasContacted { get; set; }
 }
@@ -22,4 +23,7 @@ public partial class Reminder
     
     [JsonIgnore]
     public virtual Product Product { get; set; }
+    
+    public Guid? LocationId { get; set; }
+    public Guid? ProviderId { get; set; }
 }
