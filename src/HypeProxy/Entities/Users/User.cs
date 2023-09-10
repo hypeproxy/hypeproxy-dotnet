@@ -61,6 +61,8 @@ public partial class User
 
 public partial class User
 {
+    public bool IsBetaEnrolled { get; set; }
+    
     [PublicApiIgnore]
     public string? CultureConcern { get; set; }
 
