@@ -19,6 +19,8 @@ public class UserSettings
 	
 	public bool BetaEnrolled { get; set; }
 	
+	public bool SkipPurchaseAssistant { get; set; }
+	
 	// public IEnumerable<AuthorizedIp>? DefaultAuthorizedIps { get; set; }
 
     public BillingCycles DefaultBillingPeriods { get; set; } = BillingCycles.Monthly;
