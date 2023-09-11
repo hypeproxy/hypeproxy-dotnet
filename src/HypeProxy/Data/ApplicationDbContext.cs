@@ -71,6 +71,7 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
         modelBuilder.ApplyConfiguration(new AuthorizedIpConfiguration());
         modelBuilder.ApplyConfiguration(new PriceConfiguration());
         modelBuilder.ApplyConfiguration(new InvoiceConfiguration());
+        modelBuilder.ApplyConfiguration(new InvoiceItemConfiguration());
         modelBuilder.ApplyConfiguration(new TicketConfiguration());
         modelBuilder.ApplyConfiguration(new StatusConfiguration());
         modelBuilder.ApplyConfiguration(new NotificationConfiguration());

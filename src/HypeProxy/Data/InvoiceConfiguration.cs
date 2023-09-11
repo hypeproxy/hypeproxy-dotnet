@@ -23,5 +23,13 @@ public class InvoiceConfiguration : IEntityTypeConfiguration<Invoice>
         builder
             .Property(invoice => invoice.PaymentMethod)
             .HasConversion(new EnumToStringConverter<PaymentMethods>());
+        
+        builder
+            .Property(invoice => invoice.SubtotalAmount)
+            .HasPrecision(18, 2);
+        
+        builder
+            .Property(invoice => invoice.TotalAmount)
+            .HasPrecision(18, 2);
     }
 }
