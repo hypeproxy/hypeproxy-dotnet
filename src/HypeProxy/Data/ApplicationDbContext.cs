@@ -58,6 +58,7 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new UserConfiguration());
+        modelBuilder.ApplyConfiguration(new UserSettingsConfiguration());
         modelBuilder.ApplyConfiguration(new DatacenterConfiguration());
         modelBuilder.ApplyConfiguration(new BayConfiguration());
         modelBuilder.ApplyConfiguration(new ComputeUnitConfiguration());
