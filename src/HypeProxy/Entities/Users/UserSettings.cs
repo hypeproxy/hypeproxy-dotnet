@@ -23,7 +23,7 @@ public class UserSettings
 	
 	// public IEnumerable<AuthorizedIp>? DefaultAuthorizedIps { get; set; }
 
-    public BillingCycles DefaultBillingCycles { get; set; } = BillingCycles.Monthly;
+    public BillingCycles DefaultBillingCycle { get; set; } = BillingCycles.Monthly;
 
-    public PaymentMethods DefaultPaymentMethods { get; set; } = PaymentMethods.CreditCard;
+    public PaymentMethods DefaultPaymentMethod { get; set; } = PaymentMethods.CreditCard;
 }

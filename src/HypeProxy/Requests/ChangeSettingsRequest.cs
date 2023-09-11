@@ -12,9 +12,7 @@ public class ChangeSettingsRequest
 	
     public bool? SkipPurchaseAssistant { get; set; }
     
-    // [Required]
     public BillingCycles? DefaultBillingCycle { get; set; }
     
-    // [Required]
     public PaymentMethods? DefaultPaymentMethod { get; set; }
 }
