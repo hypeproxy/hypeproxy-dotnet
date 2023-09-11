@@ -1,7 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
-using HypeProxy.Entities.Invoices;
 using HypeProxy.Entities.Statuses;
 using HypeProxy.Entities.Tickets;
 using Microsoft.AspNetCore.Identity;
@@ -61,8 +60,6 @@ public partial class User
 
 public partial class User
 {
-    public bool IsBetaEnrolled { get; set; }
-    
     [PublicApiIgnore]
     public string? CultureConcern { get; set; }
 
