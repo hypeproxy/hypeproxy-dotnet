@@ -5,7 +5,7 @@ namespace HypeProxy.Attributes;
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
 public class RequiredGuidAttribute : RequiredAttribute
 {
-	public override bool IsValid(object value)
+	public override bool IsValid(object? value)
 	{
 		if (value is null) return true;
 

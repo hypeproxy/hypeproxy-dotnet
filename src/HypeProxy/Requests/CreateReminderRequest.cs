@@ -8,9 +8,15 @@ namespace HypeProxy.Requests;
 public class CreateReminderRequest
 {
     [EmailAddress]
-    [Required]
-    public string Email { get; set; }
+    public string? Email { get; set; }
 
+    [Required]
     [RequiredGuid]
     public Guid ProductId { get; set; }
+    
+    [RequiredGuid]
+    public Guid LocationId { get; set; }
+    
+    [RequiredGuid]
+    public Guid ProviderId { get; set; }
 }
