@@ -21,6 +21,8 @@ public partial class Feature : BaseEntity
     
     public string? SwitchComponentName { get; set; }
     public string? BladeComponentName { get; set; }
+    
+    public string? Tag { get; set; }
 }
 
 public partial class Feature
