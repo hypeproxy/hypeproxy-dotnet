@@ -30,9 +30,8 @@ public partial class Proxy : BaseEntityWithPurchaseContext
 	public int Port { get; set; }
 
     /// <summary>
-    /// 
+    /// Alternative port
     /// </summary>
-	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	public int? Port2 { get; set; }
 }
 

@@ -32,6 +32,8 @@ public partial class ComputeUnit
     [JsonIgnore]
     public virtual Bay? Bay { get; set; }
     
+    // TODO: Implement direct location
+    
     [JsonIgnore]
     public virtual ICollection<Proxy> Proxies { get; set; }
 }
