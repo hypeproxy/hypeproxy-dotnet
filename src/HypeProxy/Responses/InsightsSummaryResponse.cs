@@ -7,9 +7,9 @@ namespace HypeProxy.Responses;
 [Obsolete]
 public class InsightsSummaryResponse
 {
-    public string RemoteIp { get; set; }
-    public string InternetServiceProvider { get; set; }
-    public string Asn { get; set; }
+    public string? RemoteIp { get; set; }
+    public string? InternetServiceProvider { get; set; }
+    public string? Asn { get; set; }
     public int TrustScore { get; set; }
-    public LocationDetails GeolocationDetails { get; set; }
+    public GeolocationDetails GeolocationDetails { get; set; }
 }
