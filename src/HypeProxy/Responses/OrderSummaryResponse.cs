@@ -15,9 +15,6 @@ public class OrderSummaryResponse
     public double TotalAmount { get; set; }
     public string? CouponCode { get; set; }
     
-    [Obsolete("Need to check which property is really needed")]
     public double? PriceOff { get; set; }
-    
-    [Obsolete("Need to check which property is really needed")]
     public double? PercentOff { get; set; }
 }

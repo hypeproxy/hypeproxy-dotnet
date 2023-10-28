@@ -62,6 +62,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
             .HasForeignKey(ticketAnswer => ticketAnswer.UserId)
             .OnDelete(DeleteBehavior.NoAction);
         
+        
         // builder
         //     .HasOne(user => user.Authorization)
         //     .WithOne()

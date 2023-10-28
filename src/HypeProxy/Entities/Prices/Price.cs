@@ -11,12 +11,18 @@ public partial class Price : BaseEntity
     public PaymentMethods PaymentMethod { get; set; }
     public BillingCycles BillingCycle { get; set; }
     
-    public bool IsAutomaticRenewEnabled { get; set; }
+    // public bool IsAutomaticRenewEnabled { get; set; }
     
     public double UnitPrice { get; set; }
     
+    // [PublicApiIgnore]
+    // public string? PlanId { get; set; }
+    
     [PublicApiIgnore]
-    public string? PlanId { get; set; }
+    public string? OneTimePaymentPlanId { get; set; }
+
+    [PublicApiIgnore]
+    public string? RecurringPaymentPlanId { get; set; }
 }
 
 public partial class Price
@@ -35,4 +41,6 @@ public partial class Price
     public virtual Provider? Provider { get; set; }
     
     public virtual ICollection<PriceTier>? PriceTiers { get; set; }
+    
+    public virtual ICollection<Purchase>? Purchases { get; set; }
 }

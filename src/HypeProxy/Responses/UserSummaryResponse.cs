@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using HypeProxy.Entities.Users;
 using Tapper;
 
@@ -9,8 +8,8 @@ public class UserSummaryResponse
 {
     public Guid UserId { get; set; }
     public string FullName { get; set; }
+    public string? Email { get; set; }
     public string Avatar { get; set; }
     
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public AuthorizationDetails? Authorization { get; set; }
 }

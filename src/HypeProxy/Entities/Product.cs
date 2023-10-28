@@ -18,12 +18,21 @@ namespace HypeProxy.Entities;
 public partial class Product : BaseEntity
 {
     public string Name { get; set; }
+    
+    [PublicApiIgnore]
     public string? ShortName { get; set; }
+    
+    [PublicApiIgnore]
     public string? Tagline { get; set; }
+    
+    [PublicApiIgnore]
     public string? Label { get; set; }
     
     public string? ShortDescription { get; set; }
+    
     public string? LongDescription { get; set; }
+    
+    [PublicApiIgnore]
     public string? WebDescription { get; set; }
 
     [PublicApiIgnore]
@@ -39,6 +48,17 @@ public partial class Product : BaseEntity
     [PublicApiIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public Uri? PostHookUrl { get; set; }
+}
+
+public partial class Product
+{
+    [PublicApiIgnore]
+    public int? BulkDiscountThreshold { get; set; }
+    
+    [PublicApiIgnore]
+    public int? MinimumOrder { get; set; }
+    
+    // public IEnumerable<BillingCycles>? AvailableBillingCycles { get; set; }
 }
 
 public partial class Product
@@ -59,15 +79,10 @@ public partial class Product
 public partial class Product
 {
     [NotMapped]
+    [PublicApiIgnore]
     public int AvailableStock { get; set; }
 
     [NotMapped]
+    [PublicApiIgnore]
     public bool OutOfStock => AvailableStock == 0;
 }
-
-// [PublicApiIgnore]
-// [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-// public IEnumerable<BillingCycles>? AvailableBillingCycles { get; set; }
-//
-// [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-// public int? MinimumOrder { get; set; }

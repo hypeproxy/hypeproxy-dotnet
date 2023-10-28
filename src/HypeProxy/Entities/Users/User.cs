@@ -22,10 +22,10 @@ public partial class User : IdentityUser<Guid>
 
     public string FullName { get; set; }
 
-	public DateTime RegistrationDateTime { get; set; }
+	public DateTime RegisteredAt { get; set; }
     
     [PublicApiIgnore]
-    public string StripeCustomerId { get; set; }
+    public string? StripeCustomerId { get; set; }
 }
 
 public partial class User

@@ -11,9 +11,9 @@ public class FeatureConfiguration : IEntityTypeConfiguration<Feature>
 {
     public void Configure(EntityTypeBuilder<Feature> builder)
     {
-        // builder
-        //     .Property(d => d.Type)
-        //     .HasConversion(new EnumToStringConverter<FeatureTypes>());
+        builder
+            .Property(feature => feature.Tag)
+            .HasConversion(new EnumToStringConverter<FeatureTags>());
         
         // builder
         //     .HasMany(feature => feature.Products)

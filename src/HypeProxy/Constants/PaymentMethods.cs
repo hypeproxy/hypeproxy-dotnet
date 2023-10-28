@@ -12,5 +12,14 @@ public enum PaymentMethods
 	CreditCard,
     
     [Display(Name = "Cryptocurrency")]
-	Cryptocurrency
+	Cryptocurrency,
+	
+	[Display(Name = "Alipay")]
+	Alipay,
+	
+	[Display(Name = "WebMoney")]
+	WebMoney,
+	
+	[Display(Name = "PayPal")]
+	PayPal
 }

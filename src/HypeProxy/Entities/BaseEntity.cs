@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
 using Tapper;
@@ -13,17 +12,17 @@ namespace HypeProxy.Entities;
 public abstract class BaseEntity
 {
     [Key]
-    [JsonPropertyOrder(-3)]
+    [JsonPropertyOrder(-3)] 
     public Guid Id { get; set; }
-    
-     [PublicApiIgnore]
-     public bool? IsFeatured { get; set; }
 
-     [PublicApiIgnore]
-     public bool? IsAllowed { get; set; }
+    [PublicApiIgnore]
+    public bool? IsFeatured { get; set; }
 
-     [PublicApiIgnore]
-     public int? Weight { get; set; }
+    [PublicApiIgnore] 
+    public bool? IsAllowed { get; set; }
+
+    [PublicApiIgnore]
+    public int? Weight { get; set; }
 }
 
 // public partial class BaseEntity

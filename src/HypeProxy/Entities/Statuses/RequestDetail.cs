@@ -16,9 +16,11 @@ public partial class RequestDetail
     public string? Endpoint { get; init; }
     public long Timestamp { get; init; }
 
+    // [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? UserAgent { get; set; }
 
+    // [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? ClientIp { get; set; }
 }

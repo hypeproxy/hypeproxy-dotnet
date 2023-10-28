@@ -4,8 +4,8 @@ using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
 using HypeProxy.Constants;
 using HypeProxy.Entities.Invoices;
+using HypeProxy.Entities.Prices;
 using HypeProxy.Entities.Proxies;
-using HypeProxy.Entities.Users;
 using Tapper;
 
 namespace HypeProxy.Entities;
@@ -34,14 +34,12 @@ public partial class Purchase : BaseEntityWithOwnership
     /// <summary>
     /// 
     /// </summary>
-    [JsonConverter(typeof(JsonStringEnumConverter))]
     [EnumDataType(typeof(PaymentMethods))]
     public PaymentMethods PaymentMethod { get; set; }    
     
     /// <summary>
     /// Billing cycle: Daily, Weekly, Monthly, Yearly etc.
     /// </summary>
-    [JsonConverter(typeof(JsonStringEnumConverter))]
     [EnumDataType(typeof(BillingCycles))]
     public BillingCycles BillingCycle { get; set; }
 
@@ -59,14 +57,16 @@ public partial class Purchase : BaseEntityWithOwnership
 
 public partial class Purchase
 {
-    /// <summary>
-    /// 
-    /// </summary>
     [ForeignKey(nameof(Product))]
     public Guid ProductId { get; set; }
     
     [JsonIgnore]
     public virtual Product Product { get; set; }
+    
+    [ForeignKey(nameof(Price))]
+    public Guid PriceId { get; set; }
+    
+    public virtual Price Price { get; set; }
     
     /// <summary>
     /// Defines the proxies contained in this `Purchase`.

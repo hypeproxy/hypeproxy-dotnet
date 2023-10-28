@@ -18,11 +18,13 @@ public partial class Status : BaseEntityWithOwnership
     public string? Title { get; set; }
 	public string? Message { get; set; }
     
-    public string Icon { get; set; }
+    public Icons Icon { get; set; }
     
     [JsonConverter(typeof(JsonStringEnumConverter))]
     [EnumDataType(typeof(WarningLevels))]
 	public WarningLevels Level { get; set; }
+    
+    [Obsolete]
     public bool IsAdministrator { get; set; }
     
     public Guid? RelatedEntity { get; set; }

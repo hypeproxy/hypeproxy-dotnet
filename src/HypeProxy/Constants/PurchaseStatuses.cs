@@ -1,4 +1,5 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 using Tapper;
 
 namespace HypeProxy.Constants;
@@ -13,7 +14,9 @@ public enum PurchaseStatuses
 	Created,
 	Live,
 	Off,
-    GracePeriod
+	
+	[Display(Name = "Grace Period")]
+    GracePeriod,
 	
 	// [Description("Describes the different status of a purchase.")]
 	// Canceled,
@@ -21,6 +24,5 @@ public enum PurchaseStatuses
 	// Provisioning
 	// Removed
 	// Extending
-    ,
-    Canceled
+	Cancelled
 }

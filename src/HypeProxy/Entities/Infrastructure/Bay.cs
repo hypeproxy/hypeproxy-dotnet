@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using Tapper;
@@ -22,7 +21,7 @@ public partial class Bay : BaseEntity
     public int? Stages { get; set; }
     
     /// <summary>
-    /// Standard size of a `Bay` (U-shaped).
+    /// Standard size of a `Bay` (U format).
     /// </summary>
     public int? Size { get; set; } = 32;
     

@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using Tapper;
@@ -6,7 +5,7 @@ using Tapper;
 namespace HypeProxy.Entities.Infrastructure;
 
 /// <summary>
-/// Defines a physical `Datacenter` within HypeProxy.io
+/// Defines a physical `Datacenter`.
 /// </summary>
 [TranspilationSource]
 public partial class Datacenter : BaseEntity
@@ -15,6 +14,11 @@ public partial class Datacenter : BaseEntity
     /// `Datacenter` name (i.e. HDC1)
     /// </summary>
     public string Name { get; set; }
+    
+    /// <summary>
+    /// Optional description.
+    /// </summary>
+    public string? Description { get; set; }
 
     /// <summary>
     /// The total capacity in number of bays in a `Datacenter`.

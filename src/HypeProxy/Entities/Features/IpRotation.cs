@@ -1,4 +1,3 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Entities.Proxies;
@@ -23,10 +22,14 @@ public class IpRotation : BaseEntityWithCustomFilter
     public virtual Proxy Proxy { get; set; }
     
     /// <summary>
+    /// Rotation period.
+    /// </summary>
+    [JsonIgnore]
+    public TimeSpan TimeSpan { get; set; }
+
+    /// <summary>
     /// Interval in seconds.
     /// </summary>
-    public int Interval { get; set; }
-    
-    [JsonIgnore]
-    public bool IsEnabled { get; set; }
+    [NotMapped]
+    public double Interval => TimeSpan.TotalSeconds;
 }

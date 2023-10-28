@@ -1,4 +1,3 @@
-using System.Text.Json.Serialization;
 using HypeProxy.Constants;
 using HypeProxy.Entities;
 using Microsoft.EntityFrameworkCore;
@@ -16,11 +15,11 @@ public class PurchaseConfiguration : IEntityTypeConfiguration<Purchase>
             .WithOne(invoice => invoice.Purchase)
             .HasForeignKey(invoice => invoice.PurchaseId)
             .OnDelete(DeleteBehavior.NoAction);
-        
-        // builder
-        //     .HasOne(purchase => purchase.Product)
-        //     .WithMany()
-        //     .HasForeignKey(purchase => purchase.ProductId);
+
+        builder.HasOne(purchase => purchase.Price)
+            .WithMany(price => price.Purchases)
+            .HasForeignKey(price => price.PriceId)
+            .OnDelete(DeleteBehavior.NoAction);
         
         builder
             .Property(d => d.Status)

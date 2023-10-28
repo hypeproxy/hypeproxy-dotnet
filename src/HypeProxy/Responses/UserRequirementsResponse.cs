@@ -19,4 +19,5 @@ public class UserRequirementsResponse
     public bool HasDefinedBillingDetails { get; set; }
     public bool HasDefinedUsageExplanation { get; set; }
     public bool HasAppliedKyc { get; set; }
+    public bool HasApprovedKyc { get; set; }
 }

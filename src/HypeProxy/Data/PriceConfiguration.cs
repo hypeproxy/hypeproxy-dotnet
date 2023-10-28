@@ -16,12 +16,6 @@ public class PriceConfiguration : IEntityTypeConfiguration<Price>
             .HasForeignKey(price => price.ProductId)
             .OnDelete(DeleteBehavior.NoAction);
         
-        // builder
-        //     .HasOne(p => p.Product)
-        //     .WithMany()
-        //     .HasForeignKey(p => p.ProductId)
-        //     .OnDelete(DeleteBehavior.Restrict);
-        
         builder
             .HasMany(price => price.PriceTiers)
             .WithOne(priceTier => priceTier.Price)

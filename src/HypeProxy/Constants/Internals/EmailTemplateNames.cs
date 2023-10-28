@@ -1,4 +1,4 @@
-namespace HypeProxy.Constants;
+namespace HypeProxy.Constants.Internals;
 
 public enum EmailTemplateNames
 {

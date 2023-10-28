@@ -1,6 +1,7 @@
 using HypeProxy.Constants;
+using HypeProxy.Constants.Internals;
 
-namespace HypeProxy.Requests.Payloads;
+namespace HypeProxy.Payloads;
 
 public class EmailNotificationPayload
 {

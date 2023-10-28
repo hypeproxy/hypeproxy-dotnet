@@ -14,9 +14,11 @@ public class CreateReminderRequest
     [RequiredGuid]
     public Guid ProductId { get; set; }
     
+    [Required]
     [RequiredGuid]
     public Guid LocationId { get; set; }
     
+    [Required]
     [RequiredGuid]
     public Guid ProviderId { get; set; }
 }

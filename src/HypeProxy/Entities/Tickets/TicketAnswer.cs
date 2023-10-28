@@ -18,8 +18,6 @@ public partial class TicketAnswer : BaseEntityWithCustomFilter
     public string Message { get; set; }
     
     public DateTime? AnsweredAt { get; set; }
-    
-    public Guid ResolveOwnershipId() => Ticket.UserId;
 }
 
 public partial class TicketAnswer

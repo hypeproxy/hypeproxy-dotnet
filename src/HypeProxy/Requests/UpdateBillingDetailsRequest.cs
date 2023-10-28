@@ -5,7 +5,7 @@ using Tapper;
 namespace HypeProxy.Requests;
 
 [TranspilationSource]
-public class ChangeBillingDetailsRequest
+public class UpdateBillingDetailsRequest
 {
     public string FullName { get; set; }
 

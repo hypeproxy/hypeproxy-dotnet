@@ -9,7 +9,7 @@ public class RequiredIfTrueAttribute : RequiredAttribute
 
     private string PropertyName { get; }
 
-    protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+    protected override ValidationResult? IsValid(object value, ValidationContext validationContext)
     {
         var instance = validationContext.ObjectInstance;
         var type = instance.GetType();

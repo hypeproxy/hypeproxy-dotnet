@@ -8,10 +8,10 @@ public class AuthorizedIpConfiguration : IEntityTypeConfiguration<AuthorizedIp>
 {
     public void Configure(EntityTypeBuilder<AuthorizedIp> builder)
     {
-        builder
-            .HasOne(authorizedIp => authorizedIp.Credential)
-            .WithMany(credential => credential.AuthorizedIps)
-            .HasForeignKey(authorizedIp => authorizedIp.CredentialId)
-            .OnDelete(DeleteBehavior.Cascade);
+        // builder
+        //     .HasOne(authorizedIp => authorizedIp.Credential)
+        //     .WithMany(credential => credential.AuthorizedIps)
+        //     .HasForeignKey(authorizedIp => authorizedIp.CredentialId)
+        //     .OnDelete(DeleteBehavior.Cascade);
     }
 }

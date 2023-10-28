@@ -10,7 +10,6 @@ namespace HypeProxy.Entities;
 [EditorBrowsable(EditorBrowsableState.Never)]
 public partial class Reminder : BaseEntityWithOwnership
 {
-    [Obsolete]
     public string? ContactEmail { get; set; }
 
     public bool WasContacted { get; set; }

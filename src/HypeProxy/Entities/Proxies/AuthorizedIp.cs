@@ -1,11 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using Tapper;
 
 namespace HypeProxy.Entities.Proxies;
 
-[TranspilationSource]
+// [TranspilationSource]
 public class AuthorizedIp
 {
     [Key]
@@ -14,8 +13,8 @@ public class AuthorizedIp
     
     public string IpAddress { get; set; }
     
-    [ForeignKey(nameof(Credential))]
     [JsonIgnore]
+    [ForeignKey(nameof(Credential))]
     public Guid CredentialId { get; set; }
     
     [JsonIgnore]

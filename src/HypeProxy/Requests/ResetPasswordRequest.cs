@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
+using HypeProxy.Attributes;
 using Tapper;
+using YamlDotNet.Serialization;
 
 namespace HypeProxy.Requests;
 
@@ -10,14 +12,13 @@ public class ResetPasswordRequest
 	public string Email { get; set; }
 
 	[Required]
+	[Sensible]
+	[YamlIgnore]
 	public string Token { get; set; }
 
 	[Required]
-	[DataType(DataType.Password)]
-	public string NewPassword { get; set; }
-
-	[Required]
+	[Sensible]
 	[DataType(DataType.Password)]
 	[Compare("NewPassword", ErrorMessage = "The PasswordConfirmation field doesn't match with NewPassword field.")]
-	public string PasswordConfirmation { get; set; }
+	public string NewPassword { get; set; }
 }

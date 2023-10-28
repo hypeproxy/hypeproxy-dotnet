@@ -4,6 +4,7 @@ using Tapper;
 namespace HypeProxy.Responses;
 
 [TranspilationSource]
+[Obsolete]
 public class InsightsSummaryResponse
 {
     public string RemoteIp { get; set; }

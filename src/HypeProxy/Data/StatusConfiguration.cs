@@ -18,6 +18,10 @@ public class StatusConfiguration : IEntityTypeConfiguration<Status>
             .OnDelete(DeleteBehavior.Cascade);
         
         builder
+            .Property(status => status.Icon)
+            .HasConversion(new EnumToStringConverter<Icons>());
+        
+        builder
             .Property(status => status.Level)
             .HasConversion(new EnumToStringConverter<WarningLevels>());
         

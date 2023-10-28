@@ -5,8 +5,9 @@ using Tapper;
 namespace HypeProxy.Requests;
 
 [TranspilationSource]
-public class ChangePasswordRequest
+public class UpdatePasswordRequest
 {
+	[Sensible]
 	[Required]
 	public string CurrentPassword { get; set; }
 

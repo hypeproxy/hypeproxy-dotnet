@@ -48,6 +48,7 @@
         <PackageReference Include="YamlDotNet" Version="12.0.2" />
     </ItemGroup>
 
+
 <!--    <Target Name="PostBuild" Condition="'$(Configuration)' != 'Release'" AfterTargets="PostBuildEvent">-->
 <!--      <Exec Command="cd /Users/clint.network/Projects/HypeProxy.io/v3/hypeproxy-js&#xA;./build.sh" />-->
 <!--    </Target>-->

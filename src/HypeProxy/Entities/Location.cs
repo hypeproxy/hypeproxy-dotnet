@@ -26,8 +26,6 @@ public partial class Location : BaseEntity
     [JsonIgnore]
     public virtual Location? ParentLocation { get; set; }
 
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    [EnumDataType(typeof(CountryCodes))]
     public CountryCodes? CountryCode { get; set; }
 
     [PublicApiIgnore]
@@ -46,6 +44,9 @@ public partial class Location
     public virtual ICollection<Datacenter>? Datacenters { get; set; }
 }
 
+/// <summary>
+/// Property helpers.
+/// </summary>
 public partial class Location
 {
     [NotMapped]

@@ -1,4 +1,3 @@
-#nullable enable
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
@@ -10,14 +9,16 @@ namespace HypeProxy.Requests;
 public class SignInRequest
 {
 	[Required]
-	[EmailAddress(ErrorMessage = "The Email field is not a valid email address.")]
+	[EmailAddress(ErrorMessage = "The `Email` field is not a valid email address.")]
 	public string Email { get; set; }
 
 	[Sensible]
 	[Required]
-	[DataType(DataType.Password, ErrorMessage = "The Password field is not a valid password.")]
+	[DataType(DataType.Password, ErrorMessage = "The `Password` field is not a valid password.")]
 	public string Password { get; set; }
 
+	[PublicApiIgnore]
+	[Sensible]
 	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	public string? OtpCode { get; set; }
 }

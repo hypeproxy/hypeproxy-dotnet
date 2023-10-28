@@ -4,7 +4,7 @@ using Tapper;
 namespace HypeProxy.Requests;
 
 [TranspilationSource]
-public class ChangeSettingsRequest
+public class UpdateSettingsRequest
 {
     public bool? DeveloperMode { get; set; }
 	

@@ -4,7 +4,7 @@ using Tapper;
 namespace HypeProxy.Requests;
 
 [TranspilationSource]
-public class ChangeCredentialsRequest
+public class UpdateCredentialRequest
 {
 	[Required]
 	[RegularExpression("[0-9a-zA-Z.\\-_]*", ErrorMessage = "The Username field can only contain alphanumeric characters.")]
@@ -16,9 +16,5 @@ public class ChangeCredentialsRequest
 	[MinLength(6, ErrorMessage = "This password is too weak.")]
 	public string Password { get; set; }
     
-	public IEnumerable<string> AuthorizedIps { get; set; }
-    
-
-    // public bool IsIpAuthenticationEnabled { get; set; }
-    // [RequiredIfTrue(nameof(IsIpAuthenticationEnabled), ErrorMessage = "The `AuthorizedIps` field is required.")]
+	public IEnumerable<string>? AuthorizedIps { get; set; }
 }

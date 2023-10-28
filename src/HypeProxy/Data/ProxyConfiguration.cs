@@ -25,6 +25,6 @@ public class ProxyConfiguration: IEntityTypeConfiguration<Proxy>
             .HasOne(proxy => proxy.Purchase)
             .WithMany(proxy => proxy.Proxies)
             .HasForeignKey(proxy => proxy.PurchaseId)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }

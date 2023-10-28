@@ -49,11 +49,6 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
     
     public DbSet<Status> Statuses { get; set; }
     public DbSet<RequestDetail> RequestDetails { get; set; }
-    
-    // Joins
-    // public DbSet<ProductFeature> ProductFeatures { get; set; }
-    // public DbSet<ProductLocation> ProductLocations { get; set; }
-    // public DbSet<ProductProvider> ProductProviders { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -77,10 +72,6 @@ public class ApplicationDbContext : IdentityDbContext<User, IdentityRole<Guid>, 
         modelBuilder.ApplyConfiguration(new StatusConfiguration());
         modelBuilder.ApplyConfiguration(new NotificationConfiguration());
 
-        // modelBuilder.ApplyConfiguration(new ProductFeatureConfiguration());
-        // modelBuilder.ApplyConfiguration(new ProductLocationConfiguration());
-        // modelBuilder.ApplyConfiguration(new ProductProviderConfiguration());
-        
         base.OnModelCreating(modelBuilder);
     }
 

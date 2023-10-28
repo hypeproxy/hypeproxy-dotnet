@@ -6,7 +6,7 @@ using Tapper;
 namespace HypeProxy.Requests;
 
 [TranspilationSource]
-public class OrderCriteriaRequest
+public class CreatePurchaseRequest
 {
     /// <summary>
     /// Product Id

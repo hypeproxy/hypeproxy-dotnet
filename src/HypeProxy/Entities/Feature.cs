@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
+using HypeProxy.Constants;
 using Tapper;
 
 namespace HypeProxy.Entities;
@@ -17,12 +18,17 @@ public partial class Feature : BaseEntity
     [PublicApiIgnore]
     public string? Icon { get; set; }
     
+    [PublicApiIgnore]
     public bool VisibleSwitch { get; set; }
     
+    [PublicApiIgnore]
     public string? SwitchComponentName { get; set; }
+    
+    [PublicApiIgnore]
     public string? BladeComponentName { get; set; }
     
-    public string? Tag { get; set; }
+    [PublicApiIgnore]
+    public FeatureTags Tag { get; set; }
 }
 
 public partial class Feature

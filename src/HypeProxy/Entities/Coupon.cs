@@ -1,5 +1,3 @@
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
 using Tapper;
 
 namespace HypeProxy.Entities;
@@ -8,11 +6,20 @@ namespace HypeProxy.Entities;
 /// Define a coupon to use when making a purchase.
 /// </summary>
 [TranspilationSource]
-[Obsolete]
-public class Coupon : BaseEntityWithOwnership
+public class Coupon : BaseEntityWithOwnership, IOptionalOwnership
 {
-    public string Code { get; set; }
-    
+	public Coupon()
+	{
+	}
+	
+	public Coupon(string code, double percentOff)
+	{
+		CouponCode = code;
+		PercentOff = percentOff;
+	}
+
+	public string CouponCode { get; set; }
+	
     public string? Description { get; set; }
     
 	public double PercentOff { get; set; }
@@ -20,6 +27,5 @@ public class Coupon : BaseEntityWithOwnership
 	public bool IsOneTime { get; set; }
 	public bool IsUsed { get; set; }
 
-	[JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
 	public DateTime? ExpireAt { get; set; }
 }

@@ -5,14 +5,10 @@ namespace HypeProxy.Responses;
 [TranspilationSource]
 public class BillingPortalResponse
 {
-    public string ReturnUrl { get; set; }
-    
-    public BillingPortalResponse()
-    {
-    }
-    
+    public Uri? ReturnUrl { get; set; }
+
     public BillingPortalResponse(string returnUrl)
     {
-        ReturnUrl = returnUrl;
+        ReturnUrl = new Uri(returnUrl);
     }
 }

@@ -4,7 +4,7 @@ using Tapper;
 namespace HypeProxy.Requests;
 
 [TranspilationSource]
-public class ChangeRequirementsRequest
+public class UpdateRequirementsRequest
 {
     [Required]
     public string UsageDomain { get; set; }

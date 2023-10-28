@@ -7,6 +7,6 @@ namespace HypeProxy.Requests;
 public class ForgotPasswordRequest
 {
 	[Required]
-	[EmailAddress(ErrorMessage = "It's not a valid email address.")]
+	[EmailAddress(ErrorMessage = "The `Email` field is not a valid email address.")]
 	public string Email { get; set; }
 }
