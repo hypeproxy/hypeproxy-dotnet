@@ -2,7 +2,6 @@ using Tapper;
 
 namespace HypeProxy.Constants;
 
-[TranspilationSource]
 public struct ApiErrorCodes
 {
     public const string UnknownError = "UNKNOWN_ERROR";
