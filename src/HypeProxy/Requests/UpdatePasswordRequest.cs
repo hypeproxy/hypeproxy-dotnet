@@ -13,12 +13,12 @@ public class UpdatePasswordRequest
 
 	[Sensible]
 	[Required]
-	[MinLength(6, ErrorMessage = "This password is too weak.")]
+	[MinLength(6, ErrorMessage = "The new password is too weak.")]
 	[DataType(DataType.Password, ErrorMessage = "This is not a valid password.")]
 	public string NewPassword { get; set; }
 
 	[Sensible]
 	[Required]
-	[Compare("NewPassword", ErrorMessage = "The PasswordConfirmation field doesn't match with NewPassword field.")]
+	[Compare("NewPassword", ErrorMessage = "The password confirmation does not match with the password.")]
 	public string PasswordConfirmation { get; set; }
 }

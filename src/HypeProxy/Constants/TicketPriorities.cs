@@ -7,7 +7,7 @@ namespace HypeProxy.Constants;
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum TicketPriorities
 {
-	Low,
-	Normal,
-	High
+	Low = 1,
+	Normal = 2,
+	High = 3
 }
