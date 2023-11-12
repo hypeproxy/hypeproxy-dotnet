@@ -8,7 +8,7 @@
     </PropertyGroup>
 
     <PropertyGroup>
-        <PackageId>HypeProxy</PackageId>
+        <PackageId>hypeproxy</PackageId>
         <Title>HypeProxy.io v3.1 C# Library</Title>
         <Version>3.0.64</Version>
         <Authors>HypeProxy.io</Authors>
