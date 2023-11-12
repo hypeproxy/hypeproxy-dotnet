@@ -1,11 +1,12 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
+using HypeProxy.Entities;
 using Tapper;
 
-namespace HypeProxy.Entities;
+namespace HypeProxy.Infrastructure.Entities;
 
 [TranspilationSource]
-public class BaseEntityWithPurchaseContext : BaseEntity
+public abstract class BaseEntityWithPurchaseContext : BaseEntity
 {
     [ForeignKey(nameof(Purchase))]
     public Guid? PurchaseId { get; set; }

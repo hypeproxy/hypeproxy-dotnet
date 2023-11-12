@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
 using HypeProxy.Constants;
+using HypeProxy.Infrastructure.Entities;
 using Tapper;
 
 namespace HypeProxy.Entities;

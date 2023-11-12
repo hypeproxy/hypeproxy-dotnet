@@ -1,61 +1,42 @@
 ﻿using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using HypeProxy.Entities;
-using HypeProxy.Entities.Infrastructure;
-using HypeProxy.Entities.Proxies;
+using HypeProxy.Infrastructure.Accessors;
 using HypeProxy.Requests;
 using HypeProxy.Responses;
 
+// ReSharper disable UnusedMethodReturnValue.Global
+// ReSharper disable UnusedMember.Global
 namespace HypeProxy;
 
 public class HypeProxyClient
 {
-    private HypeProxyClientOptions? _hypeProxyClientOptions;
     private readonly HttpClient _httpClient;
-    private TokenResponse? _apiKeyArtifact;
-    public bool Logged { get; set; }
+    public HypeProxyClientOptions Options { get; set; } = new();
+    public bool IsLogged { get; set; }
     
-    #region Entities Accessor
-    public EntitiesAccessor<Product> Products { get; set; }
-    public EntitiesAccessor<Location> Locations { get; set; }
-    public EntitiesAccessor<Provider> Providers { get; set; }
-    public EntitiesAccessor<Bay> Bays { get; set; }
-    public EntitiesAccessor<Purchase> Purchases { get; set; }
-    public EntitiesAccessor<Feature> Features { get; set; }
-    public EntitiesAccessor<Proxy> Proxies { get; set; }
+    #region Service Accessors
+    public Purchases Purchases { get; } = new();
     #endregion
-
-    public HypeProxyClient()
-    {
-    }
     
-    public HypeProxyClient(HypeProxyClientOptions? options)
+    private TokenResponse? _apiTokenArtifact;
+    
+    public HypeProxyClient(HypeProxyClientOptions? options = null)
     {
-        _hypeProxyClientOptions = options;
         _httpClient = new HttpClient(new HttpClientHandler
         {
         });
-        Products = new EntitiesAccessor<Product>(_httpClient);
-        _httpClient.BaseAddress = options?.BaseApiAddress;
-        // _httpClient.DefaultRequestHeaders.UserAgent = new HttpHeaderValueCollection<ProductInfoHeaderValue>()
+
+        _httpClient.BaseAddress = new Uri("https://localhost:7721");
         
-        #region Initialize entities accessors
-        Products = new EntitiesAccessor<Product>(_httpClient);
-        Locations = new EntitiesAccessor<Location>(_httpClient);
-        Providers = new EntitiesAccessor<Provider>(_httpClient);
-        Bays = new EntitiesAccessor<Bay>(_httpClient);
-        Purchases = new EntitiesAccessor<Purchase>(_httpClient);
-        Features = new EntitiesAccessor<Feature>(_httpClient);
-        Proxies = new EntitiesAccessor<Proxy>(_httpClient);
-        #endregion
+        Purchases = Purchases.CreateInstance<Purchases>(_httpClient);
     }
 
     /// <summary>
     /// Sign-in using email and password.
     /// </summary>
-    /// <param name="email">HypeProxy.io's account email</param>
-    /// <param name="password">HypeProxy.io's account password</param>
+    /// <param name="email">HypeProxy.io's account email.</param>
+    /// <param name="password">HypeProxy.io's account password.</param>
     public async Task<TokenResponse> SignInAsync(string email, string password)
     {
         var response = await _httpClient.PostAsJsonAsync("/v3/authentication/sign-in", new SignInRequest
@@ -67,15 +48,16 @@ public class HypeProxyClient
         // TODO: Handle OTP
         switch (response.StatusCode)
         {
-            default:
-                Logged = false;
-                throw new Exception("Unable to sign-in the user.");
-            
             case HttpStatusCode.OK:
-                _apiKeyArtifact = await response.Content.ReadFromJsonAsync<TokenResponse>() ?? throw new Exception();
-                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiKeyArtifact?.Token);
-                Logged = true;
-                return _apiKeyArtifact ?? throw new Exception();
+                var apiResponseWithTokenResponse = await response.Content.ReadFromJsonAsync<ApiResponse<TokenResponse>>() ?? throw new Exception();
+                _apiTokenArtifact = apiResponseWithTokenResponse.Data;
+                _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiTokenArtifact?.Token);
+                IsLogged = true;
+                return apiResponseWithTokenResponse.Data ?? throw new Exception();
+            
+            default:
+                IsLogged = false;
+                throw new Exception("Unable to sign-in the user.");
         }
     }
 
@@ -85,10 +67,12 @@ public class HypeProxyClient
     /// <param name="token">HypeProxy.io API Token.</param>
     public HypeProxyClient SignInAsync(string token)
     {
-        _apiKeyArtifact = new TokenResponse
+        _apiTokenArtifact = new TokenResponse
         {
             Token = token,
         };
+        _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _apiTokenArtifact?.Token);
+        IsLogged = true;
         return this;
     }
 
@@ -96,7 +80,8 @@ public class HypeProxyClient
 
     public HypeProxyClient SignOut()
     {
-        _apiKeyArtifact = null;
+        _apiTokenArtifact = null;
+        IsLogged = false;
         return this;
     }
 }

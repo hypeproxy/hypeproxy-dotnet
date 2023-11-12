@@ -27,24 +27,20 @@
     <ItemGroup>
         <None Include="README.md" Pack="true" PackagePath="\" />
     </ItemGroup>
+    
+    <ItemGroup Condition="'$(Configuration)' != 'Release'">
+        <PackageReference Include="ClintSharp" Version="1.1.1" />
+    </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="ClintSharp" Version="1.1.1" />
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
-        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.21" />
-        <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="2.3.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.21">
-          <PrivateAssets>all</PrivateAssets>
-          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.21" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.24" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.24" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.24" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
-        <PackageReference Include="Stripe.net" Version="42.3.0" />
-        <PackageReference Include="Tapper.Analyzer" Version="1.8.3">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-        <PackageReference Include="Tapper.Attributes" Version="1.8.3" />
-        <PackageReference Include="YamlDotNet" Version="12.0.2" />
+        <PackageReference Include="Stripe.net" Version="43.2.0" />
+        <PackageReference Include="Tapper.Analyzer" Version="1.8.4" />
+        <PackageReference Include="Tapper.Attributes" Version="1.8.4" />
+        <PackageReference Include="YamlDotNet" Version="13.7.1" />
     </ItemGroup>
 </Project>

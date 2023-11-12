@@ -1,10 +1,9 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
 using HypeProxy.Constants;
 using HypeProxy.Entities.Infrastructure;
-using HypeProxy.Entities.Joins;
+using HypeProxy.Infrastructure.Entities;
 using Tapper;
 
 namespace HypeProxy.Entities;

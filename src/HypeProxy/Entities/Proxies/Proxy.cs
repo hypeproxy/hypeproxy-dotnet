@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
 using HypeProxy.Entities.Features;
 using HypeProxy.Entities.Infrastructure;
+using HypeProxy.Infrastructure.Entities;
 using Tapper;
 
 namespace HypeProxy.Entities.Proxies;

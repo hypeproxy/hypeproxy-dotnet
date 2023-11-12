@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 using HypeProxy.Entities.Users;
 using Tapper;
 
-namespace HypeProxy.Entities;
+namespace HypeProxy.Infrastructure.Entities;
 
 [TranspilationSource]
 public abstract class BaseEntityWithOwnership : BaseEntity

@@ -1,4 +1,5 @@
 using System.Text.Json.Serialization;
+using HypeProxy.Infrastructure.Entities;
 using Tapper;
 
 namespace HypeProxy.Entities.Proxies;

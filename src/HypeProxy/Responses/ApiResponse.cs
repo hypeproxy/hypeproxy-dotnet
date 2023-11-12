@@ -23,3 +23,8 @@ public class ApiResponse
 
     public RequestDetail? RequestDetails { get; set; }
 }
+
+public class ApiResponse<TEntity> : ApiResponse
+{
+    public new TEntity? Data { get; set; }
+}

@@ -1,6 +1,6 @@
 using Tapper;
 
-namespace HypeProxy.Constants;
+namespace HypeProxy;
 
 public struct ApiErrorCodes
 {

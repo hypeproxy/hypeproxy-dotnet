@@ -6,6 +6,7 @@ using HypeProxy.Constants;
 using HypeProxy.Entities.Invoices;
 using HypeProxy.Entities.Prices;
 using HypeProxy.Entities.Proxies;
+using HypeProxy.Infrastructure.Entities;
 using Tapper;
 
 namespace HypeProxy.Entities;
@@ -14,6 +15,7 @@ namespace HypeProxy.Entities;
 /// Define a `Purchase`, containing a list of <see cref="Proxy"/>.
 /// </summary>
 [TranspilationSource]
+[Obsolete("Double check properties")]
 public partial class Purchase : BaseEntityWithOwnership
 {
     /// <summary>
@@ -103,33 +105,3 @@ public partial class Purchase
         DateTime.UtcNow <= CreatedAt?.AddHours(48) 
         && PaymentMethod == PaymentMethods.CreditCard;
 }
-
-// public partial class Purchase
-// {
-//     [NotMapped]
-//     [PublicApiIgnore]
-//     public bool IsAutomaticallyRenewable => 
-//         PaymentMethod == PaymentMethods.CreditCard && 
-//         Status == PurchaseStatuses.Live &&
-//         RelatedPaymentId != null &&
-//         RelatedPaymentId.StartsWith("sub_");
-//
-//     [NotMapped]
-//     [PublicApiIgnore]
-//     public bool IsRenewable =>
-//         Status == PurchaseStatuses.Live &&
-//         !IsAutomaticallyRenewed;
-//
-//     [NotMapped]
-//     [PublicApiIgnore]
-//     public bool IsRefundable =>
-//         CreatedAt < DateTime.UtcNow.AddDays(2) &&
-//         PaymentMethod == PaymentMethods.CreditCard;
-//
-//     [NotMapped]
-//     public bool IsGracePeriod { get; set; }
-//
-//     [NotMapped]
-//     [JsonIgnore]
-//     public DateTime GracePeriodStartDateTime { get; set; }
-// }

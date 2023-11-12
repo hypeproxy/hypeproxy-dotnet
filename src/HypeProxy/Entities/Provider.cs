@@ -1,8 +1,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Entities.Proxies;
+using HypeProxy.Infrastructure.Entities;
 using Tapper;
 
+// ReSharper disable once UnusedMember.Global
 namespace HypeProxy.Entities;
 
 /// <summary>
@@ -34,10 +36,8 @@ public partial class Provider
 public partial class Provider
 {
     [NotMapped]
-    // [JsonIgnore]
     public int AvailableStock { get; set; }
 
     [NotMapped]
-    // [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
     public bool OutOfStock => AvailableStock == 0;
 }

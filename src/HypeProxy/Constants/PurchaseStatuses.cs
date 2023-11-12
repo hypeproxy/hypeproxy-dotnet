@@ -8,6 +8,7 @@ namespace HypeProxy.Constants;
 /// Describes the different status of a purchase.
 /// </summary>
 [TranspilationSource]
+[Obsolete("Statuses review")]
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum PurchaseStatuses
 {
@@ -17,12 +18,5 @@ public enum PurchaseStatuses
 	
 	[Display(Name = "Grace Period")]
     GracePeriod,
-	
-	// [Description("Describes the different status of a purchase.")]
-	// Canceled,
-	// Refunded
-	// Provisioning
-	// Removed
-	// Extending
 	Cancelled
 }

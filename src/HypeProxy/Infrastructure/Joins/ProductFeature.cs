@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using HypeProxy.Entities;
 using Tapper;
 
-namespace HypeProxy.Entities.Joins;
+namespace HypeProxy.Infrastructure.Joins;
 
 [TranspilationSource]
 public class ProductFeature

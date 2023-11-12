@@ -1,7 +1,7 @@
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Constants;
+using HypeProxy.Infrastructure.Entities;
 using Tapper;
 
 namespace HypeProxy.Entities.Invoices;
@@ -17,8 +17,6 @@ public partial class Invoice : BaseEntityWithOwnership
     /// <summary>
     /// Defines the status of the `Invoice`.
     /// </summary>
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    [EnumDataType(typeof(InvoiceStatuses))]
     public InvoiceStatuses Status { get; set; }
     
     public PaymentMethods PaymentMethod { get; set; }

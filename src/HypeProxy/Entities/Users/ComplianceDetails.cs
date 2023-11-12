@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using Tapper;
 
@@ -9,6 +8,7 @@ namespace HypeProxy.Entities.Users;
 /// Defines the compliance details of a <see cref="User"/>.
 /// </summary>
 [TranspilationSource]
+[Obsolete("Request KYC")]
 public partial class ComplianceDetails
 {
     [Key]
