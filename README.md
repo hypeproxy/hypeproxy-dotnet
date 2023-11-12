@@ -25,7 +25,7 @@ This project contains the official HypeProxy.io library for the use of our API a
 First of all you need to install the latest version of our `HypeProxy` library with [NuGet](https://www.nuget.org/packages/HypeProxy/#readme-body-tab), to do this do :
 
 ```bash
-dotnet add package HypeProxy
+dotnet add package hypeproxy
 ```
 
 ## Sign-in Example and consuming the API:
