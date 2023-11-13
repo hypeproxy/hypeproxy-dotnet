@@ -5,6 +5,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>default</LangVersion>
+        <NoWarn>1701;1702;CS8618</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup>
