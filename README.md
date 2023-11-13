@@ -1,4 +1,4 @@
-# ⚠️ Work in Progress: This library cannot currently be used.
+# ⚠️ WIP: This library cannot currently be used.
 
 <p align="center">
   <p align="center">
