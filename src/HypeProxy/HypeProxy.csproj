@@ -11,12 +11,12 @@
     <PropertyGroup>
         <PackageId>hypeproxy</PackageId>
         <Title>HypeProxy.io v3.1 C# Library</Title>
-        <Version>3.0.66</Version>
+        <Version>3.1.66</Version>
         <Authors>HypeProxy.io</Authors>
         <Company>HypeProxy.io</Company>
-        <PackageDescription>HypeProxy.io v3.0 C# Library, also contains shared types.</PackageDescription>
-        <PackageVersion>3.0.66-alpha</PackageVersion>
-        <Description>HypeProxy.io v3.0 C# Library, also contains shared types.</Description>
+        <PackageDescription>HypeProxy.io v3.1 C# Library, also contains shared types.</PackageDescription>
+        <PackageVersion>3.1.66-beta</PackageVersion>
+        <Description>HypeProxy.io v3.1 C# Library, also contains shared types.</Description>
         <RepositoryUrl>https://github.com/hypeproxy/hypeproxy-dotnet.git</RepositoryUrl>
         <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
         <PackageProjectUrl>https://github.com/hypeproxy</PackageProjectUrl>
