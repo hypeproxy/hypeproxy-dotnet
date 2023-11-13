@@ -9,6 +9,7 @@ namespace HypeProxy.Constants;
 /// </summary>
 [TranspilationSource]
 [Obsolete("Needed review")]
+// TODO: Needed review
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum PurchaseStatuses
 {
@@ -18,5 +19,8 @@ public enum PurchaseStatuses
 	
 	[Display(Name = "Grace Period")]
     GracePeriod,
+    
+    [Obsolete]
+    // TODO: Cancelled or Canceled
 	Cancelled
 }

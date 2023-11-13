@@ -1,3 +1,5 @@
+# ⚠️ Work in Progress: This library cannot currently be used.
+
 <p align="center">
   <p align="center">
     <img src="https://raw.githubusercontent.com/hypeproxy/hypeproxy/main/logo.png" height="100" alt="HypeProxy.io" />

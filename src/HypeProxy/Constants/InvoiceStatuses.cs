@@ -8,6 +8,7 @@ namespace HypeProxy.Constants;
 /// </summary>
 [TranspilationSource]
 [Obsolete("Needed review")]
+// TODO: Needed review
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum InvoiceStatuses
 {
