@@ -13,7 +13,6 @@ namespace HypeProxy.Entities.Tickets;
 /// <see cref="Ticket"/>
 /// </summary>
 [TranspilationSource]
-[Obsolete]
 public partial class TicketAnswer : BaseEntityWithCustomFilter
 {
     /// <summary>

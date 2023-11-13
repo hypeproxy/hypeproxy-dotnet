@@ -10,6 +10,7 @@ namespace HypeProxy.Entities.Users;
 /// </summary>
 [TranspilationSource]
 [Obsolete("Request KYC")]
+// TODO: Request KYC on demand
 [EditorBrowsable(EditorBrowsableState.Never)]
 public partial class ComplianceDetails
 {

@@ -16,6 +16,7 @@ namespace HypeProxy.Entities;
 /// </summary>
 [TranspilationSource]
 [Obsolete("Double check properties")]
+// TODO: Needed review
 public partial class Purchase : BaseEntityWithOwnership
 {
     /// <summary>

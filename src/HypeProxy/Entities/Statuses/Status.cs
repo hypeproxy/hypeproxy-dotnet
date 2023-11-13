@@ -20,6 +20,7 @@ public partial class Status : BaseEntityWithOwnership
     
 	public WarningLevels Level { get; set; }
     
+    // TODO: Check if obsolete or not
     // [Obsolete]
     // public bool IsAdministrator { get; set; }
     //
