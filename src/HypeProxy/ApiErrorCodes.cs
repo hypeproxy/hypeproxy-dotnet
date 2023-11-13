@@ -2,6 +2,9 @@ using Tapper;
 
 namespace HypeProxy;
 
+/// <summary>
+/// Represents the error codes returned by the API.
+/// </summary>
 public struct ApiErrorCodes
 {
     public const string UnknownError = "UNKNOWN_ERROR";

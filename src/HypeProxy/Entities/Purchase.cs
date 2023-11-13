@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
@@ -12,47 +12,44 @@ using Tapper;
 namespace HypeProxy.Entities;
 
 /// <summary>
-/// Define a `Purchase`, containing a list of <see cref="Proxy"/>.
+/// Represents a purchase, linked with a list of <see cref="Proxy"/>.
 /// </summary>
 [TranspilationSource]
 [Obsolete("Double check properties")]
 public partial class Purchase : BaseEntityWithOwnership
 {
     /// <summary>
-    /// Defines the `Purchase` expiration date.
+    /// The date until which the purchase remains live.
     /// </summary>
     public DateTime? LiveUntil { get; set; }
     
     /// <summary>
-    /// The status of the `Purchase`.
+    /// The status of the purchase.
+    /// <see cref="PurchaseStatuses"/>
     /// </summary>
     public PurchaseStatuses Status { get; set; }
     
     /// <summary>
-    /// If the purchase should be renewed at the end of the billing cycle.
+    /// Indicates whether the purchase is automatically renewed.
     /// </summary>
     public bool IsAutomaticallyRenewed { get; set; }
     
     /// <summary>
-    /// 
+    /// The payment method used for the purchase.
     /// </summary>
-    [EnumDataType(typeof(PaymentMethods))]
     public PaymentMethods PaymentMethod { get; set; }    
     
     /// <summary>
-    /// Billing cycle: Daily, Weekly, Monthly, Yearly etc.
+    /// The billing cycle associated with the purchase.
     /// </summary>
-    [EnumDataType(typeof(BillingCycles))]
     public BillingCycles BillingCycle { get; set; }
 
-    /// <summary>
-    /// Defines the third party payment Id.
-    /// </summary>
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public string? RelatedPaymentId { get; set; }
     
     /// <summary>
-    /// Defines whether the `Purchase` is a trial or not.
+    /// Indicates whether the purchase is a trial.
     /// </summary>
     public bool IsTrial { get; set; }
 }
@@ -70,26 +67,26 @@ public partial class Purchase
     
     public virtual Price Price { get; set; }
     
-    /// <summary>
-    /// Defines the proxies contained in this `Purchase`.
-    /// </summary>
     [JsonIgnore]
     public virtual ICollection<Invoice> Invoices { get; set; }
     
-    /// <summary>
-    /// Defines the proxies contained in this `Purchase`.
-    /// </summary>
     [JsonIgnore]
     public virtual ICollection<Proxy> Proxies { get; set; }
 }
 
 public partial class Purchase
 {
+    /// <summary>
+    /// Indicates whether the purchase is in the grace period or not.
+    /// </summary>
     [NotMapped]
     public bool IsGracePeriod =>
         Status == PurchaseStatuses.GracePeriod 
         || (Status == PurchaseStatuses.Live && LiveUntil < DateTime.UtcNow);
 
+    /// <summary>
+    /// Gets the end date of the grace period, if applicable.
+    /// </summary>
     [NotMapped]
     public DateTime? GracePeriodEnd => IsGracePeriod ?
         BillingCycle switch
@@ -100,6 +97,9 @@ public partial class Purchase
             _ => LiveUntil?.AddDays(3)
         } : null;
 
+    /// <summary>
+    /// Indicates whether the purchase is refundable.
+    /// </summary>
     [NotMapped]
     public bool IsRefundable =>
         DateTime.UtcNow <= CreatedAt?.AddHours(48) 

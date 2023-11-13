@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Entities.Proxies;
@@ -10,10 +11,11 @@ namespace HypeProxy.Entities.Infrastructure;
 /// Defines a server within an <see cref="Bay"/>, which runs proxies.
 /// </summary>
 [TranspilationSource]
+[EditorBrowsable(EditorBrowsableState.Never)]
 public partial class ComputeUnit : BaseEntity
 {
     /// <summary>
-    /// `ComputeUnit` name (i.e. HCU001)
+    /// The compute unit name (i.e. HCU001)
     /// </summary>
     public string Name { get; set; }
 }

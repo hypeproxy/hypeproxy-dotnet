@@ -9,33 +9,47 @@ using Tapper;
 namespace HypeProxy.Entities;
 
 /// <summary>
-/// Defines a product (Mobile Proxies, Static Residential etc).
+/// Represents a product (Mobile Proxies, Static Residential etc).
 /// </summary>
 [TranspilationSource]
 public partial class Product : BaseEntity
 {
+    /// <summary>
+    /// The name of the product.
+    /// </summary>
     public string Name { get; set; }
     
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public string? ShortName { get; set; }
     
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public string? Tagline { get; set; }
     
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public string? Label { get; set; }
     
+    /// <summary>
+    /// A short description of the product.
+    /// </summary>
     public string? ShortDescription { get; set; }
     
+    /// <summary>
+    /// A long description of the product.
+    /// </summary>
     public string? LongDescription { get; set; }
     
     [PublicApiIgnore]
     public string? WebDescription { get; set; }
 
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public string? Icon { get; set; }
 
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public string? IllustrationUrl { get; set; }
     
     [PublicApiIgnore]
@@ -50,9 +64,11 @@ public partial class Product : BaseEntity
 public partial class Product
 {
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public int? BulkDiscountThreshold { get; set; }
     
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public int? MinimumOrder { get; set; }
     
     // public IEnumerable<BillingCycles>? AvailableBillingCycles { get; set; }
@@ -61,15 +77,19 @@ public partial class Product
 public partial class Product
 {
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual ICollection<Feature> Features { get; set; }
     
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual ICollection<Location> Locations { get; set; }
     
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual ICollection<Provider> Providers { get; set; }
     
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual ICollection<Price> Prices { get; set; }
 }
 
@@ -77,9 +97,11 @@ public partial class Product
 {
     [NotMapped]
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public int AvailableStock { get; set; }
 
     [NotMapped]
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public bool OutOfStock => AvailableStock == 0;
 }

@@ -8,7 +8,7 @@ namespace HypeProxy.Constants;
 /// Describes the different status of a purchase.
 /// </summary>
 [TranspilationSource]
-[Obsolete("Statuses review")]
+[Obsolete("Needed review")]
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum PurchaseStatuses
 {

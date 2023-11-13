@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
@@ -9,34 +9,49 @@ using Tapper;
 namespace HypeProxy.Entities.Tickets;
 
 /// <summary>
-/// Defines a user's `Ticket`.
+/// Defines a user's ticket.
 /// </summary>
 [TranspilationSource]
 public partial class Ticket : BaseEntityWithOwnership
 {
+	/// <summary>
+	/// The subject of the ticket.
+	/// </summary>
     public string Subject { get; set; }
     
-    [JsonConverter(typeof(JsonStringEnumConverter))]
-    [EnumDataType(typeof(TicketPriorities))]
+	/// <summary>
+	/// The priority of the ticket.
+	/// </summary>
     public TicketPriorities Priority { get; set; }
 
 	[PublicApiIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
 	public string? Category { get; set; }
 
+	/// <summary>
+	/// The message content of the ticket.
+	/// </summary>
 	public string Message { get; set; }
     
+	/// <summary>
+	/// Indicates whether the ticket is closed.
+	/// </summary>
 	public bool IsClosed { get; set; }
 }
 
 public partial class Ticket
 {
+	/// <summary>
+	/// The purchase Id associated with the ticket
+	/// </summary>
     [ForeignKey(nameof(Purchase))]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public Guid? PurchaseId { get; set; }
     
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual Purchase? Purchase { get; set; }
     
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual ICollection<TicketAnswer> Answers { get; set; }
 }

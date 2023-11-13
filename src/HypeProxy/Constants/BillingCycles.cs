@@ -4,14 +4,29 @@ using Tapper;
 namespace HypeProxy.Constants;
 
 /// <summary>
-/// These are the set of billing cycles that we propose.
+/// Represents the different billing cycle options.
 /// </summary>
 [TranspilationSource]
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum BillingCycles
 {
-	Monthly,
-	Daily,
-	Weekly,
-	Yearly
+    /// <summary>
+    /// Represents a billing cycle that occurs monthly.
+    /// </summary>
+    Monthly,
+
+    /// <summary>
+    /// Represents a billing cycle that occurs daily.
+    /// </summary>
+    Daily,
+
+    /// <summary>
+    /// Represents a billing cycle that occurs weekly.
+    /// </summary>
+    Weekly,
+
+    /// <summary>
+    /// Represents a billing cycle that occurs yearly.
+    /// </summary>
+    Yearly
 }

@@ -1,5 +1,5 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
 using Tapper;
@@ -13,8 +13,9 @@ namespace HypeProxy.Entities.Users;
 public partial class BillingDetails
 {
 	[Key]
-	[PublicApiIgnore]
 	[JsonIgnore]
+	[PublicApiIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
 	public Guid Id { get; set; }
 
     [Required]

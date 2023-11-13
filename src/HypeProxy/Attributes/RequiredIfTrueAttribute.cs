@@ -1,7 +1,9 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace HypeProxy.Attributes;
 
+[EditorBrowsable(EditorBrowsableState.Never)]
 [AttributeUsage(AttributeTargets.Property | AttributeTargets.Field | AttributeTargets.Parameter)]
 public class RequiredIfTrueAttribute : RequiredAttribute
 {

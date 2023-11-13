@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using Tapper;
@@ -9,6 +10,7 @@ namespace HypeProxy.Entities.Users;
 /// </summary>
 [TranspilationSource]
 [Obsolete("Request KYC")]
+[EditorBrowsable(EditorBrowsableState.Never)]
 public partial class ComplianceDetails
 {
     [Key]

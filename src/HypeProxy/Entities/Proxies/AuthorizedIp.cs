@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
@@ -5,6 +6,7 @@ using System.Text.Json.Serialization;
 namespace HypeProxy.Entities.Proxies;
 
 // [TranspilationSource]
+[EditorBrowsable(EditorBrowsableState.Never)]
 public class AuthorizedIp
 {
     [Key]

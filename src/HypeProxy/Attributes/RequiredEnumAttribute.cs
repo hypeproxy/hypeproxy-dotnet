@@ -1,7 +1,9 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace HypeProxy.Attributes;
 
+[EditorBrowsable(EditorBrowsableState.Never)]
 public class RequiredEnumAttribute : RequiredAttribute
 {
 	public override bool IsValid(object? value)

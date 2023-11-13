@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Infrastructure.Entities;
@@ -6,42 +7,40 @@ using Tapper;
 namespace HypeProxy.Entities.Infrastructure;
 
 /// <summary>
-/// Defines a physical `Datacenter`.
+/// Defines a physical datacenter.
 /// </summary>
 [TranspilationSource]
+[EditorBrowsable(EditorBrowsableState.Never)]
 public partial class Datacenter : BaseEntity
 {
     /// <summary>
-    /// `Datacenter` name (i.e. HDC1)
+    /// The datacenter name (i.e. HDC1)
     /// </summary>
     public string Name { get; set; }
     
     /// <summary>
-    /// Optional description.
+    /// (Optional) The datacenter's description.
     /// </summary>
     public string? Description { get; set; }
 
     /// <summary>
-    /// The total capacity in number of bays in a `Datacenter`.
+    /// The total capacity in number of bays in a datacenter.
     /// </summary>
     public int? Capacity { get; set; }
 
     /// <summary>
-    /// Defines if a `Datacenter` is operational or not.
+    /// Defines if a datacenter is operational or not.
     /// </summary>
     public bool IsOperational { get; set; }
     
     /// <summary>
-    /// Defines if a `Datacenter` is temporary or not.
+    /// Indicates whether if a datacenter is temporary or not.
     /// </summary>
     public bool IsTemporary { get; set; }
 }
 
 public partial class Datacenter
 {
-    /// <summary>
-    /// Location of the `Datacenter`.
-    /// </summary>
     [ForeignKey(nameof(Location))]
     public Guid LocationId { get; set; }
     

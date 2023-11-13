@@ -7,29 +7,30 @@ using Tapper;
 namespace HypeProxy.Entities.Features;
 
 /// <summary>
-/// Defines the rotation of the IP address of a <see cref="Proxy"/>.
+/// Represents an IP rotation for a specific proxy.
+/// <seealso cref="Proxy"/>
 /// </summary>
 [TranspilationSource]
 public class IpRotation : BaseEntityWithCustomFilter
 {
-    /// <summary>
-    /// Defines the relevant <see cref="Proxy"/>.
-    /// </summary>
     [JsonIgnore]
     [ForeignKey(nameof(Proxy))]
     public Guid ProxyId { get; set; }
     
+    /// <summary>
+    /// The associated proxy.
+    /// </summary>
     [JsonIgnore]
     public virtual Proxy Proxy { get; set; }
     
     /// <summary>
-    /// Rotation period.
+    /// The rotation period for IP rotation.
     /// </summary>
     [JsonIgnore]
     public TimeSpan TimeSpan { get; set; }
 
     /// <summary>
-    /// Interval in seconds.
+    /// The interval in seconds for IP rotation.
     /// </summary>
     [NotMapped]
     public double Interval => TimeSpan.TotalSeconds;

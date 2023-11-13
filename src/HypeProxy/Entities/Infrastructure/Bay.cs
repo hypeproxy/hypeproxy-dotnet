@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Infrastructure.Entities;
@@ -9,25 +10,26 @@ namespace HypeProxy.Entities.Infrastructure;
 /// Defines a rack server within a HypeProxy.io <see cref="Datacenter"/>.
 /// </summary>
 [TranspilationSource]
+[EditorBrowsable(EditorBrowsableState.Never)]
 public partial class Bay : BaseEntity
 {
     /// <summary>
-    /// `Bay` name (e.g. FRA1)
+    /// The bay name (e.g. FRA1)
     /// </summary>
     public string Name { get; set; }
 
     /// <summary>
-    /// Number of stages in a `Bay`.
+    /// Number of stages in a bay.
     /// </summary>
     public int? Stages { get; set; }
     
     /// <summary>
-    /// Standard size of a `Bay` (U format).
+    /// Standard size of a bay (U format).
     /// </summary>
     public int? Size { get; set; } = 32;
     
     /// <summary>
-    /// Defines if a `Bay` is operational or not.
+    /// Indicates whether if a bay is operational or not.
     /// </summary>
     public bool IsOperational { get; set; }
 }

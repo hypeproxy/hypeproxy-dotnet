@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
@@ -9,37 +10,52 @@ using Tapper;
 namespace HypeProxy.Entities;
 
 /// <summary>
-/// Defines an operating location for HyeProxy.io, usually a country or a city.
+/// Represents an operating location for HyeProxy.io, usually a country or a city.
 /// </summary>
 [TranspilationSource]
 public partial class Location : BaseEntity
 {
+    /// <summary>
+    /// The name of the location.
+    /// </summary>
     public string Name { get; set; }
     
+    /// <summary>
+    /// (Optional) A description providing additional information about the location.
+    /// </summary>
     public string? Description { get; set; }
     
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     [ForeignKey(nameof(ParentLocation))]
     public Guid? ParentLocationId { get; set; }
     
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual Location? ParentLocation { get; set; }
 
+    /// <summary>
+    /// The country code associated with the location (i.e. Fr, Es etc).
+    /// </summary>
     public CountryCodes? CountryCode { get; set; }
 
     [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public string? FlagUrl { get; set; }
 }
 
 public partial class Location
 {
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual ICollection<Product> Products { get; set; }
     
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual ICollection<Provider> Providers { get; set; }
     
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual ICollection<Datacenter>? Datacenters { get; set; }
 }
 
@@ -49,8 +65,12 @@ public partial class Location
 public partial class Location
 {
     [NotMapped]
+    [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public int AvailableStock { get; set; }
 
     [NotMapped]
+    [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public bool OutOfStock => AvailableStock == 0;
 }

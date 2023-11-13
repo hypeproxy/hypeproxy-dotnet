@@ -24,18 +24,3 @@ public partial class PriceTier
     public Guid PriceId { get; set; }
     public virtual Price Price { get; set; }
 }
-
-    
-// public int MaximumQuantity { get; set; }
-// public double UnitPrice { get; set; }
-//
-// public static string Serialize(IEnumerable<PriceTier> priceTiers) => string.Join(";", priceTiers.Select(tiers => $"{tiers.MaximumQuantity}={tiers.UnitPrice}"));
-//
-// public static IEnumerable<PriceTier> Deserialize(string priceTiersAsString) => priceTiersAsString
-//     .Split(";")
-//     .Select(tiers => tiers.Split("="))
-//     .Select(members => new PriceTier 
-//     { 
-//         MaximumQuantity = Convert.ToInt32(members[0]), 
-//         UnitPrice = Convert.ToDouble(members[1])
-//     });

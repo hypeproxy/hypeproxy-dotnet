@@ -1,8 +1,10 @@
+using System.ComponentModel;
 using System.Text.Json.Serialization;
 using HypeProxy.Entities;
 
-namespace HypeProxy.Requests;
+namespace HypeProxy.Infrastructure.Requests;
 
+[EditorBrowsable(EditorBrowsableState.Never)]
 public class PurchaseRequest
 {
     /// <summary>

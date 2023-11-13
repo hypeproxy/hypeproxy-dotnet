@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using HypeProxy.Infrastructure.Accessors;
 using HypeProxy.Requests;
 using HypeProxy.Responses;
 
@@ -16,7 +15,7 @@ public class HypeProxyClient
     public bool IsLogged { get; set; }
     
     #region Service Accessors
-    public Purchases Purchases { get; } = new();
+    // public Purchases Purchases { get; } = new();
     #endregion
     
     private TokenResponse? _apiTokenArtifact;
@@ -29,7 +28,7 @@ public class HypeProxyClient
 
         _httpClient.BaseAddress = new Uri("https://localhost:7721");
         
-        Purchases = Purchases.CreateInstance<Purchases>(_httpClient);
+        // Purchases = Purchases.CreateInstance<Purchases>(_httpClient);
     }
 
     /// <summary>
@@ -76,7 +75,8 @@ public class HypeProxyClient
         return this;
     }
 
-    public async Task<bool> HealthyAsync() => string.Equals(await _httpClient.GetStringAsync("/health"), "Healthy", StringComparison.CurrentCultureIgnoreCase);
+    public async Task<bool> HealthyAsync() => 
+        string.Equals(await _httpClient.GetStringAsync("/health"), "Healthy", StringComparison.CurrentCultureIgnoreCase);
 
     public HypeProxyClient SignOut()
     {

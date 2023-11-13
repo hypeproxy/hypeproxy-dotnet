@@ -6,7 +6,7 @@ using Tapper;
 namespace HypeProxy.Infrastructure.Joins;
 
 [TranspilationSource]
-public class ProductProvider
+public abstract class ProductProvider
 {
     [Key]
     public Guid Id { get; set; }
