@@ -19,17 +19,10 @@ public partial class Status : BaseEntityWithOwnership
     public Icons Icon { get; set; }
     
 	public WarningLevels Level { get; set; }
-    
-    // TODO: Check if obsolete or not
-    // [Obsolete]
-    // public bool IsAdministrator { get; set; }
-    //
-    // public Guid? RelatedEntity { get; set; }
-    // public string? RelatedEntityType { get; set; }
 }
 
 public partial class Status
 {
     [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-    public virtual RequestDetail? RequestDetails { get; set; }
+    public virtual RequestDetails? RequestDetails { get; set; }
 }

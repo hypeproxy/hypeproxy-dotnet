@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
 using Tapper;
@@ -9,6 +10,7 @@ namespace HypeProxy.Infrastructure.Entities;
 /// Represents an abstract base entity.
 /// </summary>
 [TranspilationSource]
+[EditorBrowsable(EditorBrowsableState.Never)]
 public abstract class BaseEntity
 {
     /// <summary>

@@ -7,15 +7,11 @@ namespace HypeProxy.Constants;
 /// Represents the different statuses an invoice can have.
 /// </summary>
 [TranspilationSource]
-[Obsolete("Needed review")]
-// TODO: Needed review
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum InvoiceStatuses
 {
-	Draft,
-	Issued,
+	Created,
 	Paid,
-	NotPaid,
 	Refunded,
 	Canceled
 }

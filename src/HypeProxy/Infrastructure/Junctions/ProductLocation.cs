@@ -1,12 +1,15 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using HypeProxy.Entities;
 using Tapper;
 
-namespace HypeProxy.Infrastructure.Joins;
+namespace HypeProxy.Infrastructure.Junctions;
 
 [TranspilationSource]
-public abstract class ProductProvider
+[EditorBrowsable(EditorBrowsableState.Never)]
+[Table("ProductLocations")]
+public class ProductLocation
 {
     [Key]
     public Guid Id { get; set; }
@@ -15,7 +18,7 @@ public abstract class ProductProvider
     public Guid ProductId { get; set; }
     public virtual Product Product { get; set; }
     
-    [ForeignKey(nameof(Provider))]
-    public Guid ProviderId { get; set; }
-    public virtual Provider Provider { get; set; }
+    [ForeignKey(nameof(Location))]
+    public Guid LocationId { get; set; }
+    public virtual Location Location { get; set; }
 }

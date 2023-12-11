@@ -23,6 +23,15 @@ public partial class Reminder
     [JsonIgnore]
     public virtual Product Product { get; set; }
     
+    [ForeignKey(nameof(Location))]
     public Guid? LocationId { get; set; }
+    
+    [JsonIgnore]
+    public virtual Location Location{ get; set; }
+    
+    [ForeignKey(nameof(Provider))]
     public Guid? ProviderId { get; set; }
+
+    [JsonIgnore]
+    public virtual Provider Provider { get; set; }
 }

@@ -5,22 +5,35 @@ using Tapper;
 namespace HypeProxy.Constants;
 
 /// <summary>
-/// Describes the different status of a purchase.
+/// Represents the different statuses of a purchase.
 /// </summary>
 [TranspilationSource]
-[Obsolete("Needed review")]
-// TODO: Needed review
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum PurchaseStatuses
 {
+	/// <summary>
+	/// The purchase has been just created.
+	/// </summary>
 	Created,
-	Live,
+	
+	/// <summary>
+	/// The purchase is active.
+	/// </summary>
+	Active,
+	
+	/// <summary>
+	/// The purchase is not active anymore.
+	/// </summary>
 	Off,
 	
+	/// <summary>
+	/// The purchase will be disabled shortly.
+	/// </summary>
 	[Display(Name = "Grace Period")]
     GracePeriod,
     
-    [Obsolete]
-    // TODO: Cancelled or Canceled
-	Cancelled
+    /// <summary>
+    /// The purchase is canceled.
+    /// </summary>
+    Canceled
 }

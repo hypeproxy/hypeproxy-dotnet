@@ -5,7 +5,7 @@ using HypeProxy.Attributes;
 using HypeProxy.Constants;
 using HypeProxy.Entities.Invoices;
 using HypeProxy.Entities.Prices;
-using HypeProxy.Entities.Proxies;
+using HypeProxy.Entities.Tickets;
 using HypeProxy.Infrastructure.Entities;
 using Tapper;
 
@@ -15,8 +15,6 @@ namespace HypeProxy.Entities;
 /// Represents a purchase, linked with a list of <see cref="Proxy"/>.
 /// </summary>
 [TranspilationSource]
-[Obsolete("Double check properties")]
-// TODO: Needed review
 public partial class Purchase : BaseEntityWithOwnership
 {
     /// <summary>
@@ -72,6 +70,9 @@ public partial class Purchase
     public virtual ICollection<Invoice> Invoices { get; set; }
     
     [JsonIgnore]
+    public virtual ICollection<Ticket> Tickets { get; set; }
+    
+    [JsonIgnore]
     public virtual ICollection<Proxy> Proxies { get; set; }
 }
 
@@ -83,7 +84,7 @@ public partial class Purchase
     [NotMapped]
     public bool IsGracePeriod =>
         Status == PurchaseStatuses.GracePeriod 
-        || (Status == PurchaseStatuses.Live && LiveUntil < DateTime.UtcNow);
+        || (Status == PurchaseStatuses.Active && LiveUntil < DateTime.UtcNow);
 
     /// <summary>
     /// Gets the end date of the grace period, if applicable.

@@ -7,7 +7,7 @@ namespace HypeProxy.Entities.Statuses;
 
 [TranspilationSource]
 [Table("RequestDetails")]
-public partial class RequestDetail
+public partial class RequestDetails
 {
     [Key]
     [JsonIgnore]
@@ -15,17 +15,11 @@ public partial class RequestDetail
 
     public string? Endpoint { get; init; }
     public long Timestamp { get; init; }
-
-    // [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? UserAgent { get; set; }
-
-    // [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-    [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
     public string? ClientIp { get; set; }
 }
 
-public partial class RequestDetail
+public partial class RequestDetails
 {
     [JsonIgnore]
     [ForeignKey(nameof(Status))]
@@ -34,8 +28,3 @@ public partial class RequestDetail
     [JsonIgnore]
     public virtual Status? Status { get; set; }
 }
-    
-// [NotMapped]
-// [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-// public Guid? UserId { get; set; }
-// public DateTime CreatedAt { get; init; }

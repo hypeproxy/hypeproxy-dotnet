@@ -5,6 +5,7 @@ using HypeProxy.Attributes;
 using HypeProxy.Constants;
 using HypeProxy.Entities.Infrastructure;
 using HypeProxy.Infrastructure.Entities;
+using HypeProxy.Infrastructure.Junctions;
 using Tapper;
 
 namespace HypeProxy.Entities;
@@ -24,6 +25,10 @@ public partial class Location : BaseEntity
     /// (Optional) A description providing additional information about the location.
     /// </summary>
     public string? Description { get; set; }
+    
+    [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public string? CustomDisclaimerOrHint { get; set; }
     
     [PublicApiIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -48,11 +53,11 @@ public partial class Location
 {
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Product> Products { get; set; }
+    public virtual ICollection<ProductLocation> ProductLocations { get; set; }
     
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Provider> Providers { get; set; }
+    public virtual ICollection<LocationProvider> LocationProviders { get; set; }
     
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -65,12 +70,8 @@ public partial class Location
 public partial class Location
 {
     [NotMapped]
-    [PublicApiIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
     public int AvailableStock { get; set; }
 
     [NotMapped]
-    [PublicApiIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
     public bool OutOfStock => AvailableStock == 0;
 }

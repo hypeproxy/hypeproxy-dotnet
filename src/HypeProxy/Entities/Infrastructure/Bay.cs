@@ -14,9 +14,14 @@ namespace HypeProxy.Entities.Infrastructure;
 public partial class Bay : BaseEntity
 {
     /// <summary>
-    /// The bay name (e.g. FRA1)
+    /// The bay name (i.e. FRA1)
     /// </summary>
     public string Name { get; set; }
+    
+    /// <summary>
+    /// (Optional) The description of the bay.
+    /// </summary>
+    public string? Description { get; set; }
 
     /// <summary>
     /// Number of stages in a bay.

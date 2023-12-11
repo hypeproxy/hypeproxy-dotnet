@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Entities;
@@ -9,6 +10,7 @@ namespace HypeProxy.Infrastructure.Entities;
 /// Represents an abstract base entity with purchase context.
 /// </summary>
 [TranspilationSource]
+[EditorBrowsable(EditorBrowsableState.Never)]
 public abstract class BaseEntityWithPurchaseContext : BaseEntity
 {
     /// <summary>

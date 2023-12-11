@@ -3,12 +3,13 @@ using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
 using HypeProxy.Constants;
 using HypeProxy.Infrastructure.Entities;
+using HypeProxy.Infrastructure.Junctions;
 using Tapper;
 
 namespace HypeProxy.Entities;
 
 /// <summary>
-/// Represnts a functionality for a given product.
+/// Represents a feature for a specific product.
 /// </summary>
 [TranspilationSource]
 public partial class Feature : BaseEntity
@@ -51,5 +52,5 @@ public partial class Feature
 {
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Product> Products { get; set; }
+    public virtual ICollection<ProductFeature> ProductFeatures { get; set; }
 }

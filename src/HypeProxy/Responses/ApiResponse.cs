@@ -37,9 +37,9 @@ public class ApiResponse
     public IEnumerable<ApiError> Errors { get; set; }
 
     /// <summary>
-    /// An instance of <see cref="RequestDetail"/> providing details about the request. It can be null.
+    /// An instance of <see cref="Entities.Statuses.RequestDetails"/> providing details about the request. It can be null.
     /// </summary>
-    public RequestDetail? RequestDetails { get; set; }
+    public RequestDetails? RequestDetails { get; set; }
 }
 
 /// <summary>

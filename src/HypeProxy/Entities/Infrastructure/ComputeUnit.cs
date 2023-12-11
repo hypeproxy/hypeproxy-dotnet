@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using HypeProxy.Entities.Proxies;
 using HypeProxy.Infrastructure.Entities;
 using Tapper;
 
@@ -18,6 +17,13 @@ public partial class ComputeUnit : BaseEntity
     /// The compute unit name (i.e. HCU001)
     /// </summary>
     public string Name { get; set; }
+    
+    public string SubscriptionAddress { get; set; }
+    
+    /// <summary>
+    /// (Optional) The description of the compute unit.
+    /// </summary>
+    public string? Description { get; set; }
 }
 
 public partial class ComputeUnit
@@ -34,7 +40,11 @@ public partial class ComputeUnit
     [JsonIgnore]
     public virtual Bay? Bay { get; set; }
     
-    // TODO: Implement direct location
+    [ForeignKey(nameof(Location))]
+    public Guid? OrphanLocationId { get; set; }
+    
+    [JsonIgnore]
+    public virtual Location? OrphanLocation { get; set; }
     
     [JsonIgnore]
     public virtual ICollection<Proxy> Proxies { get; set; }

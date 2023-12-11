@@ -9,12 +9,10 @@ namespace HypeProxy.Requests;
 [TranspilationSource]
 public class DeletePurchaseRequest : PurchaseRequest
 {
-    // TODO: Shouldn't be optional. 
     /// <summary>
     /// The reason why the purchase is being cancelled.
     /// </summary>
-    [Obsolete]
-    public string? CancellationReason { get; set; }
+    public string CancellationReason { get; set; }
     
     /// <summary>
     /// If a refund is being claimed or not.

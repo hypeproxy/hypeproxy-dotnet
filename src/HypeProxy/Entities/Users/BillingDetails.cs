@@ -1,20 +1,18 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using HypeProxy.Attributes;
 using Tapper;
 
 namespace HypeProxy.Entities.Users;
 
 /// <summary>
-/// Define the billing details of a <see cref="User"/>.
+/// Represents the billing details of an user.
 /// </summary>
 [TranspilationSource]
 public partial class BillingDetails
 {
 	[Key]
 	[JsonIgnore]
-	[PublicApiIgnore]
 	[EditorBrowsable(EditorBrowsableState.Never)]
 	public Guid Id { get; set; }
 

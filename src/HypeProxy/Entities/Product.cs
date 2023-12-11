@@ -2,8 +2,10 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
+using HypeProxy.Constants;
 using HypeProxy.Entities.Prices;
 using HypeProxy.Infrastructure.Entities;
+using HypeProxy.Infrastructure.Junctions;
 using Tapper;
 
 namespace HypeProxy.Entities;
@@ -69,39 +71,52 @@ public partial class Product
     
     [PublicApiIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public int? MinimumOrder { get; set; }
+    public int? BulkDiscountValue { get; set; }
     
-    // public IEnumerable<BillingCycles>? AvailableBillingCycles { get; set; }
+    [PublicApiIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public int? MinimumOrder { get; set; }
 }
 
 public partial class Product
 {
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Feature> Features { get; set; }
+    public virtual ICollection<ProductLocation> ProductLocations { get; set; }
     
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Location> Locations { get; set; }
+    public virtual ICollection<ProductFeature> ProductFeatures { get; set; }
     
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Provider> Providers { get; set; }
+    public virtual ICollection<ProductProvider> ProductProviders { get; set; }
+    
+    [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public virtual ICollection<ProductBillingCycle>? ProductBillingCycles { get; set; }
     
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual ICollection<Price> Prices { get; set; }
+    
+    [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public virtual ICollection<Purchase> Purchases { get; set; }
 }
 
 public partial class Product
 {
     [NotMapped]
-    [PublicApiIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
     public int AvailableStock { get; set; }
 
     [NotMapped]
-    [PublicApiIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
     public bool OutOfStock => AvailableStock == 0;
+
+    [NotMapped]
+    public IEnumerable<BillingCycles>? AvailableBillingCycles => ProductBillingCycles?.Any() == true
+        ? ProductBillingCycles
+            .Where(productBillingCycle => productBillingCycle.ProductId == Id)
+            .Select(productBillingCycle => productBillingCycle.BillingCycle)
+        : null; // Enum.GetValues<BillingCycles>();
 }

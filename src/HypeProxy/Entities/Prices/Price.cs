@@ -27,7 +27,7 @@ public partial class Price : BaseEntity
     public double UnitPrice { get; set; }
     
     [PublicApiIgnore]
-    public string? OneTimePaymentPlanId { get; set; }
+    public string? SinglePaymentPlanId { get; set; }
 
     [PublicApiIgnore]
     public string? RecurringPaymentPlanId { get; set; }

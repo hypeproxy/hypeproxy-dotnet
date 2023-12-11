@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Entities.Users;
@@ -9,6 +10,7 @@ namespace HypeProxy.Infrastructure.Entities;
 /// Represents an abstract base entity with ownership information.
 /// </summary>
 [TranspilationSource]
+[EditorBrowsable(EditorBrowsableState.Never)]
 public abstract class BaseEntityWithOwnership : BaseEntity
 {
     /// <summary>

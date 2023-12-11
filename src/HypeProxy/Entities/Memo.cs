@@ -16,6 +16,6 @@ public partial class Memo : BaseEntityWithOwnership
 
 public partial class Memo
 {
-    public static implicit operator string(Memo d) => d.Message;
-    public static implicit operator Memo(string d) => new() { Message = d };
+    public static implicit operator string(Memo memo) => memo.Message;
+    public static implicit operator Memo(string message) => new() { Message = message };
 }

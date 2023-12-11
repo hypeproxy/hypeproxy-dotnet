@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
+using HypeProxy.Entities.Invoices;
 using HypeProxy.Entities.Statuses;
 using HypeProxy.Entities.Tickets;
 using Microsoft.AspNetCore.Identity;
@@ -56,50 +57,26 @@ public partial class User
     [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual BillingDetails? BillingDetails { get; set; }
     
+    [ForeignKey(nameof(Settings))]
+    public Guid? SettingsId { get; set; }
+    
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual UserSettings? Settings { get; set; }
     
+    [ForeignKey(nameof(Authorization))]
+    public Guid? AuthorizationId { get; set; }
+    
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual AuthorizationDetails? Authorization { get; set; }
-	
+
+    [ForeignKey(nameof(Compliance))]
+    public Guid? ComplianceId { get; set; }
+
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual ComplianceDetails? Compliance { get; set; }
-}
-
-public partial class User
-{
-    // public virtual ICollection<Invoice> Invoices { get; set; }
-    
-    [JsonIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Purchase> Purchases { get; set; }
-    
-    [JsonIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Notification> Notifications { get; set; }
-    
-    [JsonIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Memo> Memos { get; set; }
-    
-    [JsonIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Reminder> Reminders { get; set; }
-    
-    [JsonIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Status> Statuses { get; set; }
-    
-    [JsonIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Ticket> Tickets { get; set; }
-    
-    [JsonIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<TicketAnswer> TicketAnswers { get; set; }
 }
 
 public partial class User
@@ -127,4 +104,37 @@ public partial class User
     [PublicApiIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public bool HadFirstLogin { get; set; }
+}
+
+public partial class User
+{
+	public virtual ICollection<Invoice> Invoices { get; set; }
+    
+	[JsonIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public virtual ICollection<Purchase> Purchases { get; set; }
+    
+	[JsonIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public virtual ICollection<Notification> Notifications { get; set; }
+    
+	[JsonIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public virtual ICollection<Memo> Memos { get; set; }
+    
+	[JsonIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public virtual ICollection<Reminder> Reminders { get; set; }
+    
+	[JsonIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public virtual ICollection<Status> Statuses { get; set; }
+    
+	[JsonIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public virtual ICollection<Ticket> Tickets { get; set; }
+    
+	[JsonIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public virtual ICollection<TicketAnswer> TicketAnswers { get; set; }
 }

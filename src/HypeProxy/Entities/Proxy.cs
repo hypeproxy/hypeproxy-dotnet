@@ -7,7 +7,7 @@ using HypeProxy.Entities.Infrastructure;
 using HypeProxy.Infrastructure.Entities;
 using Tapper;
 
-namespace HypeProxy.Entities.Proxies;
+namespace HypeProxy.Entities;
 
 /// <summary>
 /// Defines a logical access to a proxy server.

@@ -19,7 +19,7 @@ public partial class Datacenter : BaseEntity
     public string Name { get; set; }
     
     /// <summary>
-    /// (Optional) The datacenter's description.
+    /// (Optional) The description of the datacenter.
     /// </summary>
     public string? Description { get; set; }
 

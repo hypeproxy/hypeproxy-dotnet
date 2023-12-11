@@ -2,8 +2,8 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Attributes;
-using HypeProxy.Entities.Proxies;
 using HypeProxy.Infrastructure.Entities;
+using HypeProxy.Infrastructure.Junctions;
 using Tapper;
 
 // ReSharper disable once UnusedMember.Global
@@ -24,6 +24,10 @@ public partial class Provider : BaseEntity
 	/// A description providing additional information about the provider.
 	/// </summary>
 	public string? Description { get; set; }
+    
+	[PublicApiIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public string? CustomDisclaimerOrHint { get; set; }
 	
 	[PublicApiIgnore]
 	[EditorBrowsable(EditorBrowsableState.Never)]
@@ -40,13 +44,13 @@ public partial class Provider : BaseEntity
 
 public partial class Provider
 {
-    [JsonIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Product> Products { get; set; }
+	[JsonIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public virtual ICollection<ProductProvider> ProductProviders { get; set; }
     
-    [JsonIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
-    public virtual ICollection<Location> Locations { get; set; }
+	[JsonIgnore]
+	[EditorBrowsable(EditorBrowsableState.Never)]
+	public virtual ICollection<LocationProvider> LocationProviders { get; set; }
     
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
@@ -56,12 +60,8 @@ public partial class Provider
 public partial class Provider
 {
 	[NotMapped]
-	[PublicApiIgnore]
-	[EditorBrowsable(EditorBrowsableState.Never)]
     public int AvailableStock { get; set; }
 
     [NotMapped]
-    [PublicApiIgnore]
-    [EditorBrowsable(EditorBrowsableState.Never)]
     public bool OutOfStock => AvailableStock == 0;
 }

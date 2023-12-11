@@ -10,7 +10,7 @@ namespace HypeProxy.Entities.Users;
 /// Represents user-specific settings and preferences.
 /// </summary>
 [TranspilationSource]
-public class UserSettings
+public partial class UserSettings
 {
 	[Key]
     [JsonIgnore]
@@ -41,4 +41,10 @@ public class UserSettings
 	/// The default payment method selected by the user. Defaults to credit card.
 	/// </summary>
     public PaymentMethods DefaultPaymentMethod { get; set; } = PaymentMethods.CreditCard;
+}
+
+public partial class UserSettings
+{
+	[JsonIgnore]
+	public virtual User User { get; set; }
 }

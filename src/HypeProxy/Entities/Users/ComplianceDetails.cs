@@ -6,16 +6,15 @@ using Tapper;
 namespace HypeProxy.Entities.Users;
 
 /// <summary>
-/// Defines the compliance details of a <see cref="User"/>.
+/// Represents the compliance details of an user.
 /// </summary>
 [TranspilationSource]
-[Obsolete("Request KYC")]
-// TODO: Request KYC on demand
 [EditorBrowsable(EditorBrowsableState.Never)]
 public partial class ComplianceDetails
 {
     [Key]
     [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public Guid Id { get; set; }
     
     public bool HasRequestedKyc { get; set; }
@@ -29,4 +28,10 @@ public partial class ComplianceDetails
 {
     public string? UsageDomain { get; set; }
     public string? UsageExplanation { get; set; }
+}
+
+public partial class ComplianceDetails
+{
+    [JsonIgnore]
+    public virtual User User { get; set; }
 }

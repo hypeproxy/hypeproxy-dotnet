@@ -1,24 +1,22 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
+using HypeProxy.Entities;
+using Tapper;
 
-namespace HypeProxy.Entities.Proxies;
+namespace HypeProxy.Infrastructure.Junctions;
 
-// [TranspilationSource]
+[TranspilationSource]
 [EditorBrowsable(EditorBrowsableState.Never)]
-public class AuthorizedIp
+[Table("CredentialAuthorizedIps")]
+public class CredentialAuthorizedIp
 {
     [Key]
-    [JsonIgnore]
     public Guid Id { get; set; }
     
-    public string IpAddress { get; set; }
-    
-    [JsonIgnore]
     [ForeignKey(nameof(Credential))]
     public Guid CredentialId { get; set; }
-    
-    [JsonIgnore]
     public virtual Credential Credential { get; set; }
+    
+    public string AuthorizedIp { get; set; }
 }

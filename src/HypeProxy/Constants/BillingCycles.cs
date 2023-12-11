@@ -11,11 +11,6 @@ namespace HypeProxy.Constants;
 public enum BillingCycles
 {
     /// <summary>
-    /// Represents a billing cycle that occurs monthly.
-    /// </summary>
-    Monthly,
-
-    /// <summary>
     /// Represents a billing cycle that occurs daily.
     /// </summary>
     Daily,
@@ -25,6 +20,11 @@ public enum BillingCycles
     /// </summary>
     Weekly,
 
+    /// <summary>
+    /// Represents a billing cycle that occurs monthly.
+    /// </summary>
+    Monthly,
+    
     /// <summary>
     /// Represents a billing cycle that occurs yearly.
     /// </summary>

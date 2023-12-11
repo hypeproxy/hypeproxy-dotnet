@@ -1,9 +1,11 @@
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Infrastructure.Entities;
+using HypeProxy.Infrastructure.Junctions;
 using Tapper;
 
-namespace HypeProxy.Entities.Proxies;
+namespace HypeProxy.Entities;
 
 /// <summary>
 /// Defines the way to connect to a <see cref="Proxy"/>.
@@ -20,11 +22,6 @@ public partial class Credential : BaseEntityWithCustomFilter
     /// The password of the proxy.
     /// </summary>
 	public string? Password { get; set; }
-    
-    /// <summary>
-    /// (Optional) The list of authorized IP addresses.
-    /// </summary>
-    public virtual IEnumerable<string>? AuthorizedIps { get; set; }
 }
 
 public partial class Credential
@@ -35,4 +32,19 @@ public partial class Credential
     [JsonIgnore]
     [EditorBrowsable(EditorBrowsableState.Never)]
     public virtual Proxy Proxy { get; set; }
+    
+    [JsonIgnore]
+    [EditorBrowsable(EditorBrowsableState.Never)]
+    public virtual ICollection<CredentialAuthorizedIp>? CredentialAuthorizedIps { get; set; }
+}
+
+public partial class Credential
+{
+    /// <summary>
+    /// (Optional) The list of authorized IP addresses.
+    /// </summary>
+    [NotMapped]
+    public IEnumerable<string>? AuthorizedIps => CredentialAuthorizedIps?
+        .Where(credentialAuthorizedIps => credentialAuthorizedIps.CredentialId == Id)
+        .Select(credentialAuthorizedIps => credentialAuthorizedIps.AuthorizedIp);
 }

@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
 using HypeProxy.Entities.Users;
@@ -15,12 +14,6 @@ namespace HypeProxy.Entities.Tickets;
 [TranspilationSource]
 public partial class TicketAnswer : BaseEntityWithCustomFilter
 {
-    /// <summary>
-    /// The unique identifier for the ticket answer.
-    /// </summary>
-    [Key]
-    public Guid Id { get; set; }
-    
     /// <summary>
     /// The message content of the ticket answer.
     /// </summary>
